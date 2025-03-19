@@ -1,5 +1,7 @@
+import Home from "./components/subpages/home/Home";
+
 function App() {
-  return <></>;
+  return <><Home /></>;
 }
 
 export default App;
