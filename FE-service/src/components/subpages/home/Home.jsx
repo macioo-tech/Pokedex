@@ -1,29 +1,22 @@
-import { useState } from "react";
-import useFetch from "../../../hooks/useFetch";
-import useGet from "../../../hooks/useGet";
-
-const BASE_URL = "https://pokeapi.co/api/v2";
+import useLoadPokemons from "../../../hooks/useLoadPokemons";
+import LoadingScreen from "../../shared/LoadingScreen";
+import Pagination from "../../shared/Pagination";
+import PokemonCard from "../../shared/PokemonCard";
 
 const Home = () => {
-  const [page, setPage] = useState(1);
-  const maxOnPage = 15;
-  let offset = page * maxOnPage;
+  const { pokemons, isError, isLoading, limit, page, setPage } = useLoadPokemons();
 
-  const { data, error, loading } = useFetch(
-    `${BASE_URL}/pokemon?limit=${maxOnPage}&offset=${offset}`
-  );
-
-
-  console.log("error", error);
-  console.log("loading", loading);
-  console.log("page", page)
-  console.log("offset", offset)
-  console.log("data", data);
+  if (isLoading) return <LoadingScreen />;
+  if (isError) return <p>...Netwrok error occured</p>;
 
   return (
     <>
-      <h1>Hejka</h1>
-      <button onClick={() => setPage(page+1)}>Page++</button>
+      <div className="grid grid-cols-3 gap-10 justify-between m-10">
+        {pokemons.map((item) => (
+          <PokemonCard key={item.id} {...item} />
+        ))}
+      </div>
+      <Pagination limit={limit} page={page} setPage={setPage} />
     </>
   );
 };
