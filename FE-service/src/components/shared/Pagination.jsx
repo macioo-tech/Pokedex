@@ -9,7 +9,7 @@ const Pagination = ({ limit, page, setPage }) => {
     <div className="flex justify-center items-center gap-2">
       {enablePrev ? (
         <IconButton size="sm" color="secondary" variant="ghost" onClick={() => setPage((prev) => prev - 1)}>
-          <GrPrevious className="mr-1.5 h-4 w-4 stroke-2" />
+          <GrPrevious className="text-blue-500 font-bold mr-1.5 h-4 w-4 stroke-2" />
         </IconButton>
       ) : null}
       <Typography className="flex items-center gap-1 text-foreground">
@@ -24,7 +24,7 @@ const Pagination = ({ limit, page, setPage }) => {
       </Typography>
       {enableNext ? (
         <IconButton size="sm" color="secondary" variant="ghost" onClick={() => setPage((prev) => prev + 1)}>
-          <GrNext className="ml-1.5 h-4 w-4 stroke-2" />
+          <GrNext className="text-blue-500 font-bold ml-1.5 h-4 w-4 stroke-2" />
         </IconButton>
       ) : null}
     </div>
