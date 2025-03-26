@@ -5,6 +5,7 @@ import { NotificationProvider } from "./context/NotificationContext";
 import { Home } from "./components/index.js";
 import "./index.css";
 import App from "./App.jsx";
+import { LoginProvider } from "./context/LoginContext.jsx";
 
 const router = createBrowserRouter([
   {
@@ -16,8 +17,10 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-      <NotificationProvider>
+    <NotificationProvider>
+      <LoginProvider>
         <RouterProvider router={router} />
-      </NotificationProvider>
+      </LoginProvider>
+    </NotificationProvider>
   </StrictMode>
 );

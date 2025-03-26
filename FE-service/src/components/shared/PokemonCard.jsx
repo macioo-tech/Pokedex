@@ -1,6 +1,6 @@
 const PokemonCard = ({ name, img, height, weight, base, ability }) => {
   return (
-    <div className="flex flex-col justify-center items-center border-2 rounded-3xl p-10 bg-gradient-to-r from-gray-200 to-white shadow-lg">
+    <div className="flex flex-col justify-center items-center border-none rounded-3xl p-10 bg-gradient-to-r from-gray-100 via-white to-gray-100 shadow-lg">
       <div className="text-[1.5rem] font-mono font-bold">{name}</div>
       <img src={img} alt={name} className="object-cover" />
       <div className="text-center flex flex-col md:flex-row justify-between items-center">

@@ -6,8 +6,14 @@ html, body {
   margin: 0;
   padding: 0;
   font-family: "Space Grotesk", sans-serif;
-  background-color: #f3f4f6;
-  color: #0a0a0a;
+  background-color: white;
+  color: black;
+}
+
+@layer components {
+  .sub-menu {
+    @apply absolute top-[4.2rem] p-[15px] rounded-[6px] origin-[50%_-170px] backdrop-blur bg-white/[0.04];
+  }
 }
 
 @layer utilities {
