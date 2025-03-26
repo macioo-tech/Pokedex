@@ -5,7 +5,7 @@ const Pagination = ({ limit, page, setPage }) => {
   const enableNext = page !== limit;
 
   return (
-    <div className="flex items-center gap-8">
+    <div className="flex justify-center items-center gap-8">
       {enablePrev ? (
         <button
           type="button"
