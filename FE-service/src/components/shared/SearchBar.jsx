@@ -1,10 +1,9 @@
-import { Input } from "@material-tailwind/react";
-import { FaSearch } from "react-icons/fa";
+import { MagnifyingGlassIcon } from "@heroicons/react/16/solid";
 
 const SearchBar = ({ ...props }) => {
   return (
     <div className="w-full rounded-lg h-[12] p-4 shadow-lg flex content-center items-center bg-gradient-to-r from-gray-200 to-white">
-      <FaSearch className="text-blue-500 cursor-pointer text-center" />
+      <MagnifyingGlassIcon className="text-blue-500 cursor-pointer text-center" />
       <input
         type="text"
         {...props}

@@ -1,11 +1,11 @@
-
 import { NavLink } from "react-router-dom";
+import Navbar from "../shared/NavBar";
+
 
 const Layout = ({ children }) => {
-
   return (
     <div>
-      <nav className="fixed top-0 w-full z-40 bg-[rgba(10,10,10,0.8) backdrop-blur-lg border-b border-white/10 shadow-lg">
+      {/* <nav className="fixed top-0 w-full z-40 bg-[rgba(10,10,10,0.8) backdrop-blur-lg border-b border-white/10 shadow-lg">
         <div className="max-w-5xl mx-auto px-4">
           <div className="flex justify-between items-center h-16">
             <NavLink
@@ -23,15 +23,18 @@ const Layout = ({ children }) => {
                 <div>Arena</div>
                 <div>Ranking</div>
                 <div>Edycja</div>
-                <div>Wyloguj</div> */}
+                <div>Wyloguj</div>
               </div>
             </div>
           </div>
         </div>
-      </nav>
+      </nav> */}
+       <Navbar />
       <div>{children}</div>
+ 
     </div>
   );
 };
 
 export default Layout;
+
