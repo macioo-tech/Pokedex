@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { Menus } from "../../../services/menus";
 import { MagnifyingGlassIcon } from "@heroicons/react/16/solid";
-import { InputText, Menu } from "../../index";
+import { Search, Menu } from "../../index";
 
 const Header = () => {
   const handleChange = (value) => {
@@ -19,18 +19,17 @@ const Header = () => {
             <img src="/pngegg.png" className="h-36" alt="Pokedex logo" />
           </NavLink>
         </div>
-        <div className="flex flex-row-reverse bg-white px-10 ...">
+        <div className="flex flex-row-reverse items-center bg-white px-10 ...">
           {Menus?.map((menu) => (
             <Menu key={menu.name} menu={menu} />
           ))}
           <div className="flex items-center p-4 ...">
-            <InputText
+            <Search
               icon={
                 <MagnifyingGlassIcon
                   className={`text-indigo-800 h-10 cursor-pointer`}
                 />
               }
-              placeholder="Search your pokemon"
               onChange={(e) => handleChange(e.target.value)}
             />
           </div>

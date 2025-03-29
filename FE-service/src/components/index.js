@@ -9,7 +9,8 @@ import Favourites from "./subpages/favourites/Favourites";
 import Edit from "./subpages/edit/Edit";
 import Ranking from "./subpages/ranking/Ranking";
 
-import InputText from "./shared/InputText";
+import Search from "./shared/Search";
+import Input from "./shared/Input";
 import Menu from "./subpages/header/Menu";
 import Button from "./shared/Button";
 
@@ -25,5 +26,6 @@ export {
   Ranking,
   Button,
   Menu,
-  InputText,
+  Search,
+  Input,
 };
