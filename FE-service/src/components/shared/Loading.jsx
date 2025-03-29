@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const LoadingScreen = ({ onComplete }) => {
+const Loading = ({ onComplete }) => {
   const [text, setText] = useState("");
   const fullText = "<Pokedex is loading>";
 
@@ -35,4 +35,4 @@ const LoadingScreen = ({ onComplete }) => {
   );
 };
 
-export default LoadingScreen;
+export default Loading;

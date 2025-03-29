@@ -1,7 +1,7 @@
 import { useContext } from 'react'
-import { LoginContext } from "../../../context/LoginContext";
+import { LoginContext } from "../../context/LoginContext";
 import { useForm, FormProvider } from "react-hook-form";
-import { Input, Button } from "../../index";
+import { Input, Button } from "../index";
 import { AtSymbolIcon, LockClosedIcon } from "@heroicons/react/16/solid";
 
 import { NavLink } from "react-router-dom";

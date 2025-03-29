@@ -1,7 +1,7 @@
 import { useForm, FormProvider } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Input, Button } from "../../index";
-import { schemaSignUp } from "../../../services/schemaSignUp";
+import { Input, Button } from "../index";
+import { schemaSignUp } from "../../services/schemaSignUp";
 import { NavLink } from "react-router-dom";
 import {
   UserPlusIcon,

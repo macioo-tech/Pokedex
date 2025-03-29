@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
-import { LoginContext } from "../../../context/LoginContext";
+import { LoginContext } from "../../context/LoginContext";
 
 const SubMenu = ({ menu }) => {
   const [showItem, setShowItem] = useState(false);

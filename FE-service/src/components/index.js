@@ -1,18 +1,21 @@
 import Layout from "./layout/Layout";
 
-import Home from "./subpages/home/Home";
-import Header from "./subpages/header/Header";
-import Login from "./subpages/login/Login";
-import SignUp from "./subpages/login/SignUp";
-import Arena from "./subpages/arena/Arena";
-import Favourites from "./subpages/favourites/Favourites";
-import Edit from "./subpages/edit/Edit";
-import Ranking from "./subpages/ranking/Ranking";
+import Home from "./shared/Home";
+import Header from "./subpages/Header";
+import Login from "./subpages/Login";
+import SignUp from "./subpages/SignUp";
+import Arena from "./subpages/Arena";
+import Favourites from "./subpages/Favourites";
+import Edit from "./subpages/Edit";
+import Ranking from "./subpages/Ranking";
 
 import Search from "./shared/Search";
 import Input from "./shared/Input";
-import Menu from "./subpages/header/Menu";
+import Menu from "./subpages/Menu";
 import Button from "./shared/Button";
+import Card from "./subpages/Card";
+import Loading from "./shared/Loading";
+import Pagination from "./shared/Pagination"
 
 export {
   Layout,
@@ -28,4 +31,7 @@ export {
   Menu,
   Search,
   Input,
+  Card,
+  Loading,
+  Pagination,
 };

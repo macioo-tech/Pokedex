@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
-import { LoginContext } from "../../../context/LoginContext";
-import Button from "../../shared/Button";
+import { LoginContext } from "../../context/LoginContext";
+import Button from "../shared/Button";
 import SubMenu from "./SubMenu";
 
 const Menu = ({ menu }) => {

@@ -1,4 +1,4 @@
-const PokemonCard = ({ name, img, height, weight, base, ability }) => {
+const Card = ({ name, img, height, weight, base, ability }) => {
   return (
     <div className="flex flex-col justify-center items-center p-10 gap-y-2 border border-indigo-800 rounded-lg shadow-lg ">
       <div className="text-[1.5rem] font-mono font-bold">{name}</div>
@@ -21,4 +21,4 @@ const PokemonCard = ({ name, img, height, weight, base, ability }) => {
   );
 };
 
-export default PokemonCard;
+export default Card;
