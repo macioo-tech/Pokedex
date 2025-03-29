@@ -1,11 +1,9 @@
-
 import { NavLink } from "react-router-dom";
 import { Menus } from "../../../services/menus";
-import Menu from "./Menu";
-import SearchBar from "./SearchBar";
+import { MagnifyingGlassIcon } from "@heroicons/react/16/solid";
+import { InputText, Menu } from "../../index";
 
 const Header = () => {
-
   const handleChange = (value) => {
     console.log(value);
   };
@@ -26,7 +24,12 @@ const Header = () => {
             <Menu key={menu.name} menu={menu} />
           ))}
           <div className="flex items-center p-4 ...">
-            <SearchBar
+            <InputText
+              icon={
+                <MagnifyingGlassIcon
+                  className={`text-indigo-800 h-10 cursor-pointer`}
+                />
+              }
               placeholder="Search your pokemon"
               onChange={(e) => handleChange(e.target.value)}
             />

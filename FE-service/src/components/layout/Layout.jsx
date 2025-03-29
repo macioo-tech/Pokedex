@@ -1,5 +1,4 @@
-import { NavLink } from "react-router-dom";
-import Header from "../subpages/navbar/Header";
+import { Header } from "../index";
 
 const Layout = ({ children }) => {
   return (

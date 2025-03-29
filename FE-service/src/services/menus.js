@@ -19,16 +19,19 @@ export const Menus = [
             name: "Sign out",
             icon: PowerIcon,
             loginRequired: true,
+            path: "signout",
         },
         {
             name: "Login",
             icon: LockClosedIcon,
             loginRequired: false,
+            path: "login",
         },
         {
-            name: "Sign in",
+            name: "Sign Up",
             icon: IdentificationIcon,
             loginRequired: false,
+            path: "signup",
         },
     ]
     },
@@ -39,24 +42,28 @@ export const Menus = [
         loginRequired: true,
         sub: [
             {
-                name: "Favourite",
+                name: "Favourites",
                 icon: HeartIcon,
                 loginRequired: true,
+                path: "favourites",
             },
             {
                 name: "Arena",
                 icon: PlayCircleIcon,
                 loginRequired: true,
+                path: "arena",
             },
             {
                 name: "Ranking",
                 icon: PresentationChartLineIcon,
                 loginRequired: true,
+                path: "ranking",
             },
             {
-                name: "Edition",
+                name: "Edit",
                 icon: PencilSquareIcon,
                 loginRequired: true,
+                path: "edit",
             },
         ]
     }
