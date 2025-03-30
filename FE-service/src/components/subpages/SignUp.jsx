@@ -8,13 +8,15 @@ import {
   AtSymbolIcon,
   LockClosedIcon,
 } from "@heroicons/react/16/solid";
+import useSignUp from "../../hooks/useSignUp";
 
 const SignUp = () => {
+  const { onSubmit } = useSignUp();
   const methods = useForm({
     shouldUnregister: false,
     resolver: zodResolver(schemaUsers),
     defaultValues: {
-      firstName: "",
+      name: "",
       email: "",
       password: "",
       repeatPassword: "",
@@ -22,11 +24,6 @@ const SignUp = () => {
   });
 
   const { handleSubmit } = methods;
-
-  const onSubmit = (data) => {
-    console.log("sign-up", data);
-    
-  };
 
   return (
     <div className="flex flex-col justify-center items-center">

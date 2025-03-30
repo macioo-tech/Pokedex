@@ -1,12 +1,16 @@
 {
-    "users": [
-      {
-        "id": 1,
-        "firstName": "bobi",
-        "email": "bobi@kenobi",
-        "password": "password1"
-      }
-    ]
-    
-  }
-  
+  "users": [
+    {
+      "id": 1,
+      "name": "bobi",
+      "email": "bobi@kenobi",
+      "password": "password1"
+    },
+    {
+      "name": "maciek",
+      "email": "maciek@op.pl",
+      "password": "Krokodylek@1",
+      "id": 2
+    }
+  ]
+}

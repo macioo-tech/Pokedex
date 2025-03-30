@@ -4,7 +4,7 @@ import { NotificationContext } from "../context/NotificationContext";
 import { LocalApi } from "../services/api";
 import { useNavigate } from "react-router-dom";
 
-const useLogin = () => {
+const useSignUp = () => {
   const { isLoggedIn, setIsLoggedIn } = useContext(LoginContext);
   const { handleNotification } = useContext(NotificationContext);
   const navigate = useNavigate();
@@ -12,33 +12,27 @@ const useLogin = () => {
   const onSubmit = async (data, event) => {
     if (!isLoggedIn) {
       event.preventDefault();
-      const { email, password } = data;
+      delete data.confirm;
 
       try {
-        const response = await LocalApi.get(
-          `users?email=${email}&password=${password}`
-        );
-        if (response.data?.length > 0) {
-          setIsLoggedIn(true);
-          handleNotification("Log in successful!");
-          localStorage.setItem("userIsLoggedIn", true);
-          navigate("/");
-        } else {
-          handleNotification("Incorrect username or password!");
-          setIsLoggedIn(false);
-        }
+        const response = await LocalApi.post(`/users`, data, {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        console.log("axios post data", response);
+        handleNotification("User signed up successfully!");
+        setIsLoggedIn(true);
+        navigate("/");
       } catch {
         handleNotification("Log in failed. Network error!");
         setIsLoggedIn(false);
       }
-    } else { 
-      setIsLoggedIn(false);
-      localStorage.setItem("userIsLoggedIn", false);
-      handleNotification("User has been logged out");
+    } else {
       navigate("/");
     }
   };
   return { onSubmit, isLoggedIn };
 };
 
-export default useLogin;
+export default useSignUp;

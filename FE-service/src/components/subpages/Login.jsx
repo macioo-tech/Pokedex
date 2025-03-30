@@ -9,7 +9,7 @@ const Login = () => {
   const methods = useForm({
     shouldUnregister: false,
     defaultValues: {
-      user: "",
+      email: "",
       password: "",
     },
   });
@@ -26,7 +26,7 @@ const Login = () => {
           className="flex flex-col justify-center items-center p-10 gap-y-10 border border-indigo-800 rounded-lg shadow-lg "
         >
           <Input
-            name="user"
+            name="email"
             label="email"
             icon={
               <AtSymbolIcon className={`text-indigo-800 h-10 cursor-pointer`} />
