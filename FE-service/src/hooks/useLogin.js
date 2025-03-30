@@ -31,11 +31,8 @@ const useLogin = () => {
         handleNotification("Log in failed. Network error!");
         setIsLoggedIn(false);
       }
-    } else {
-      
-      
+    } else { 
       setIsLoggedIn(false);
-      console.log("isLoggedIn", isLoggedIn);
       localStorage.setItem("userIsLoggedIn", false);
       handleNotification("User has been logged out");
       navigate("/");

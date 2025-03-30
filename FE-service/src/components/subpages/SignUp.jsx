@@ -1,7 +1,7 @@
 import { useForm, FormProvider } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Input, Button } from "../index";
-import { schemaSignUp } from "../../services/schemaSignUp";
+import { schemaUsers } from "../../services/schemas";
 import { NavLink } from "react-router-dom";
 import {
   UserPlusIcon,
@@ -9,10 +9,10 @@ import {
   LockClosedIcon,
 } from "@heroicons/react/16/solid";
 
-const SignUp = ({ setFormSubmited, setFormData }) => {
+const SignUp = () => {
   const methods = useForm({
     shouldUnregister: false,
-    resolver: zodResolver(schemaSignUp),
+    resolver: zodResolver(schemaUsers),
     defaultValues: {
       firstName: "",
       email: "",
@@ -24,8 +24,8 @@ const SignUp = ({ setFormSubmited, setFormData }) => {
   const { handleSubmit } = methods;
 
   const onSubmit = (data) => {
-    setFormSubmited(true);
-    setFormData({ ...data });
+    console.log("sign-up", data);
+    
   };
 
   return (
@@ -39,15 +39,15 @@ const SignUp = ({ setFormSubmited, setFormData }) => {
           className="flex flex-col justify-center items-center p-10 gap-y-10 border border-indigo-800 rounded-lg shadow-lg "
         >
           <Input
-            name="firstName"
-            label="First name or nickname"
+            name="name"
+            label="Name or nickname"
             icon={
               <UserPlusIcon className={`text-indigo-800 h-10 cursor-pointer`} />
             }
           />
           <Input
             name="email"
-            label="E-mail"
+            label="example@example.com"
             icon={
               <AtSymbolIcon className={`text-indigo-800 h-10 cursor-pointer`} />
             }
@@ -63,9 +63,9 @@ const SignUp = ({ setFormSubmited, setFormData }) => {
             }
           />
           <Input
-            name="repeatPassword"
+            name="confirm"
             type="password"
-            label="Repeat password"
+            label="Confirm password"
             icon={
               <LockClosedIcon
                 className={`text-indigo-800 h-10 cursor-pointer`}
