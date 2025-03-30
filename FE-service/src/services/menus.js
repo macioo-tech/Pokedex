@@ -19,7 +19,7 @@ export const Menus = [
             name: "Sign out",
             icon: PowerIcon,
             loginRequired: true,
-            path: "signout",
+            path: "logout",
         },
         {
             name: "Login",

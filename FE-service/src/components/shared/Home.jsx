@@ -1,10 +1,8 @@
-
 import { Card, Loading, Pagination } from "../index";
-import useLoadPokemons from "../../hooks/useLoadPokemons";
+import useHome from "../../hooks/useHome";
 
 const Home = () => {
-  const { pokemons, isError, isLoading, limit, page, setPage } =
-    useLoadPokemons();
+  const { pokemons, isError, isLoading, limit, page, setPage } = useHome();
 
   if (isLoading) return <Loading />;
   if (isError) return <p>...Netwrok error occured</p>;

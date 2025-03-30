@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import api from "../services/api";
+import { PokeApi } from "../services/api";
 
-const useLoadPokemons = () => {
+const useHome = () => {
   const [pokemons, setPokemons] = useState(null);
   const [isError, setIsError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -12,14 +12,14 @@ const useLoadPokemons = () => {
     const loadPokemons = async () => {
       setIsLoading(true);
       try {
-        const response = await api.get(
+        const response = await PokeApi.get(
           `/pokemon?limit=${limit}&offset=${limit * page}`
         );
         const names = [...(response.data?.results || [])].map(
           (item) => item.name
         );
 
-        const promises = names.map((name) => api.get(`/pokemon/${name}`));
+        const promises = names.map((name) => PokeApi.get(`/pokemon/${name}`));
         const datalist = await Promise.all(promises);
         const pokelist = [...datalist].map((item) => ({
           id: item.data.id,
@@ -49,4 +49,4 @@ const useLoadPokemons = () => {
   return { pokemons, isError, isLoading, limit, page, setPage };
 };
 
-export default useLoadPokemons;
+export default useHome;

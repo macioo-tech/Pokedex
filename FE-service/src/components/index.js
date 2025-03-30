@@ -3,6 +3,7 @@ import Layout from "./layout/Layout";
 import Home from "./shared/Home";
 import Header from "./subpages/Header";
 import Login from "./subpages/Login";
+import Logout from "./subpages/Logout";
 import SignUp from "./subpages/SignUp";
 import Arena from "./subpages/Arena";
 import Favourites from "./subpages/Favourites";
@@ -22,6 +23,7 @@ export {
   Home,
   Header,
   Login,
+  Logout,
   SignUp,
   Arena,
   Favourites,

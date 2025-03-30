@@ -1,30 +1,19 @@
-import { useContext } from 'react'
-import { LoginContext } from "../../context/LoginContext";
 import { useForm, FormProvider } from "react-hook-form";
 import { Input, Button } from "../index";
 import { AtSymbolIcon, LockClosedIcon } from "@heroicons/react/16/solid";
-
 import { NavLink } from "react-router-dom";
-
+import useLogin from "../../hooks/useLogin";
 
 const Login = () => {
-  const { isLoggedIn, setLoggedIn } = useContext(LoginContext);
-
+  const { onSubmit } = useLogin();
   const methods = useForm({
     shouldUnregister: false,
     defaultValues: {
-      firstName: "",
+      user: "",
       password: "",
     },
   });
-
   const { handleSubmit } = methods;
-
-  const onSubmit = (data) => {
-    setLoggedIn(true);
-    console.log(isLoggedIn);
-    console.log(data);
-  };
 
   return (
     <div className="flex flex-col justify-center items-center">
@@ -37,7 +26,7 @@ const Login = () => {
           className="flex flex-col justify-center items-center p-10 gap-y-10 border border-indigo-800 rounded-lg shadow-lg "
         >
           <Input
-            name="firstName"
+            name="user"
             label="email"
             icon={
               <AtSymbolIcon className={`text-indigo-800 h-10 cursor-pointer`} />

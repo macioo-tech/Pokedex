@@ -8,16 +8,9 @@ const Menu = ({ menu }) => {
   const [showSubItem, setShowSubItem] = useState(false);
   const { isLoggedIn } = useContext(LoginContext);
 
-  const hasSubMenu = menu?.sub?.length;
-
   useEffect(() => {
     setShowItem(!menu?.loginRequired || (menu?.loginRequired && isLoggedIn));
   }, [isLoggedIn, menu?.loginRequired]);
-
-  console.log("hasSubMenu", hasSubMenu);
-  console.log("isLoggedIn", isLoggedIn);
-  console.log("showSubItem", showSubItem);
-  console.log("hasSubMenu", hasSubMenu);
 
   return (
     <>

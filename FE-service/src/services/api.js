@@ -1,7 +1,9 @@
 import axios from "axios";
 
-const api = axios.create({
+export const PokeApi = axios.create({
   baseURL: "https://pokeapi.co/api/v2",
 });
 
-export default api
+export const LocalApi = axios.create({
+  baseURL: "http://localhost:3000",
+});
