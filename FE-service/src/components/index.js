@@ -1,6 +1,6 @@
 import Layout from "./layout/Layout";
 
-import Home from "./shared/Home";
+import Home from "./subpages/Home";
 import Header from "./subpages/Header";
 import Login from "./subpages/Login";
 import Logout from "./subpages/Logout";

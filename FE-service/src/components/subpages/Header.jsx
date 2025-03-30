@@ -2,10 +2,13 @@ import { NavLink } from "react-router-dom";
 import { Menus } from "../../services/menus";
 import { MagnifyingGlassIcon } from "@heroicons/react/16/solid";
 import { Search, Menu } from "../index";
+import useHome from "../../hooks/useHome";
 
 const Header = () => {
+  const { setQuery } = useHome();
+
   const handleChange = (value) => {
-    console.log(value);
+    setQuery(value);
   };
 
   return (

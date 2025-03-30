@@ -20,7 +20,6 @@ const useSignUp = () => {
             "Content-Type": "application/json",
           },
         });
-        console.log("axios post data", response);
         handleNotification("User signed up successfully!");
         setIsLoggedIn(true);
         navigate("/");

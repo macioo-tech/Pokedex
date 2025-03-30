@@ -1,10 +1,13 @@
+import { PokemonProvider } from "../../context/PokemonContext";
 import { Header } from "../index";
 
 const Layout = ({ children }) => {
   return (
     <div>
-      <Header />
-      <div>{children}</div>
+      <PokemonProvider>
+        <Header />
+        <div>{children}</div>
+      </PokemonProvider>
     </div>
   );
 };

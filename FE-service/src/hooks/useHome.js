@@ -1,25 +1,57 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { PokemonContext } from "../context/PokemonContext";
 import { PokeApi } from "../services/api";
 
 const useHome = () => {
-  const [pokemons, setPokemons] = useState(null);
-  const [isError, setIsError] = useState(null);
+  const { setPokemons } = useContext(PokemonContext);
+  const [allPokemons, setAllPokemons] = useState([]);
+  const [isError, setIsError] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const [page, setPage] = useState(0);
-  const limit = 15;
+  const [isPage, setPage] = useState(0);
+  const [query, setQuery] = useState("");
+  const limitAll = 150;
+  const maxPerPage = 15;
 
   useEffect(() => {
-    const loadPokemons = async () => {
+    const loadAllPokemons = async () => {
       setIsLoading(true);
       try {
         const response = await PokeApi.get(
-          `/pokemon?limit=${limit}&offset=${limit * page}`
+          `/pokemon?limit=${limitAll}&offset=${0}`
         );
         const names = [...(response.data?.results || [])].map(
           (item) => item.name
         );
+        setAllPokemons(names);
+      } catch (error) {
+        setIsError(error);
+      }
+    };
 
-        const promises = names.map((name) => PokeApi.get(`/pokemon/${name}`));
+    loadAllPokemons();
+    return () => {
+      setIsLoading(false);
+    };
+  }, []);
+
+  useEffect(() => {
+    const loadPokemons = async () => {
+      if (allPokemons?.length === 0) return;
+
+      setIsLoading(true);
+      try {
+        const offset = maxPerPage * isPage;
+        let pagePokemons = allPokemons.slice(offset, offset + maxPerPage);
+
+        if (query !== "") {
+          pagePokemons = pagePokemons.filter((name) =>
+            name.toLowerCase().includes(query.toLowerCase())
+          );
+        }
+        
+        const promises = pagePokemons.map((name) =>
+          PokeApi.get(`/pokemon/${name}`)
+        );
         const datalist = await Promise.all(promises);
         const pokelist = [...datalist].map((item) => ({
           id: item.data.id,
@@ -30,7 +62,7 @@ const useHome = () => {
           ability: item.data.abilities[0].ability.name,
           img: item.data.sprites.front_default,
         }));
-
+              
         setPokemons(pokelist);
       } catch (error) {
         setIsError(error);
@@ -44,9 +76,17 @@ const useHome = () => {
     return () => {
       setIsLoading(false);
     };
-  }, [page]);
+  }, [isPage, allPokemons, query]);
 
-  return { pokemons, isError, isLoading, limit, page, setPage };
+  return {
+    isError,
+    isLoading,
+    maxPerPage,
+    isPage,
+    setPage,
+    query,
+    setQuery,
+  };
 };
 
 export default useHome;

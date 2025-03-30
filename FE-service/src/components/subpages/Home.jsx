@@ -1,8 +1,11 @@
 import { Card, Loading, Pagination } from "../index";
+import { useContext } from "react";
+import { PokemonContext } from "../../context/PokemonContext";
 import useHome from "../../hooks/useHome";
 
 const Home = () => {
-  const { pokemons, isError, isLoading, limit, page, setPage } = useHome();
+  const { pokemons } = useContext(PokemonContext);
+  const { isError, isLoading, maxPerPage, isPage, setPage } = useHome();
 
   if (isLoading) return <Loading />;
   if (isError) return <p>...Netwrok error occured</p>;
@@ -14,7 +17,7 @@ const Home = () => {
           <Card key={item.id} {...item} />
         ))}
       </div>
-      <Pagination limit={limit} page={page} setPage={setPage} />
+      <Pagination length={pokemons.length} limit={maxPerPage} page={isPage} setPage={setPage} />
     </div>
   );
 };
