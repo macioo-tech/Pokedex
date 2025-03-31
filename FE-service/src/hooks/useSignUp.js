@@ -1,12 +1,11 @@
 import { useContext } from "react";
 import { LoginContext } from "../context/LoginContext";
-import { NotificationContext } from "../context/NotificationContext";
+import { enqueueSnackbar } from "notistack";
 import { LocalApi } from "../services/api";
 import { useNavigate } from "react-router-dom";
 
 const useSignUp = () => {
   const { isLoggedIn, setIsLoggedIn } = useContext(LoginContext);
-  const { handleNotification } = useContext(NotificationContext);
   const navigate = useNavigate();
 
   const onSubmit = async (data, event) => {
@@ -15,16 +14,16 @@ const useSignUp = () => {
       delete data.confirm;
 
       try {
-        const response = await LocalApi.post(`/users`, data, {
+        await LocalApi.post(`/users`, data, {
           headers: {
             "Content-Type": "application/json",
           },
         });
-        handleNotification("User signed up successfully!");
+        enqueueSnackbar(`Welcome ${data.name} in the Pokedex`, { variant: 'success' });
         setIsLoggedIn(true);
         navigate("/");
       } catch {
-        handleNotification("Log in failed. Network error!");
+        enqueueSnackbar(`Wrong user or password`, { variant: 'error' });
         setIsLoggedIn(false);
       }
     } else {

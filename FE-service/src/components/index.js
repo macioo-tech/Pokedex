@@ -17,6 +17,8 @@ import Button from "./shared/Button";
 import Card from "./subpages/Card";
 import Loading from "./shared/Loading";
 import Pagination from "./shared/Pagination"
+import Stats from "./shared/Stats"
+import Title from "./shared/Title"
 
 export {
   Layout,
@@ -36,4 +38,6 @@ export {
   Card,
   Loading,
   Pagination,
+  Stats,
+  Title,
 };

@@ -1,12 +1,11 @@
 import { useContext } from "react";
 import { LoginContext } from "../context/LoginContext";
-import { NotificationContext } from "../context/NotificationContext";
+import { enqueueSnackbar } from "notistack";
 import { LocalApi } from "../services/api";
 import { useNavigate } from "react-router-dom";
 
 const useLogin = () => {
   const { isLoggedIn, setIsLoggedIn } = useContext(LoginContext);
-  const { handleNotification } = useContext(NotificationContext);
   const navigate = useNavigate();
 
   const onSubmit = async (data, event) => {
@@ -19,22 +18,22 @@ const useLogin = () => {
           `users?email=${email}&password=${password}`
         );
         if (response.data?.length > 0) {
+          enqueueSnackbar(`Welcome ${email}`, { variant: 'success' });
           setIsLoggedIn(true);
-          handleNotification("Log in successful!");
           localStorage.setItem("userIsLoggedIn", true);
           navigate("/");
         } else {
-          handleNotification("Incorrect username or password!");
+          enqueueSnackbar(`Wrong user or password`, { variant: 'error' });
           setIsLoggedIn(false);
         }
       } catch {
-        handleNotification("Log in failed. Network error!");
+        enqueueSnackbar(`Network error`, { variant: 'error' });
         setIsLoggedIn(false);
       }
-    } else { 
+    } else {
+      enqueueSnackbar("Goodbuy! You're logged out"); 
       setIsLoggedIn(false);
       localStorage.setItem("userIsLoggedIn", false);
-      handleNotification("User has been logged out");
       navigate("/");
     }
   };

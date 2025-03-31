@@ -1,7 +1,7 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { NotificationProvider } from "./context/NotificationContext";
+import { SnackbarProvider } from "notistack";
 import { LoginProvider } from "./context/LoginContext.jsx";
 import {
   Home,
@@ -35,10 +35,10 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <NotificationProvider>
+    <SnackbarProvider maxSnack={3} preventDuplicate autoHideDuration={3000}>
       <LoginProvider>
         <RouterProvider router={router} />
       </LoginProvider>
-    </NotificationProvider>
+    </SnackbarProvider>
   </StrictMode>
 );
