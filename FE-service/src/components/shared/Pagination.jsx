@@ -13,7 +13,7 @@ const Pagination = ({ length, limit, page, setPage }) => {
   return (
     <div className="flex justify-center items-center gap-2 pb-10 font-mono text-xl">
       {enablePrev ? (
-        <Button onClick={() => setPage((prev) => prev - 1)}>
+        <Button variant="icon" onClick={() => setPage((prev) => prev - 1)}>
           <ArrowLeftIcon strokeWidth={2} className="size-8" />
         </Button>
       ) : null}
@@ -22,7 +22,7 @@ const Pagination = ({ length, limit, page, setPage }) => {
         <strong>{Math.floor(length / limit)}</strong>
       
       {enableNext ? (
-         <Button onClick={() => setPage((prev) => prev + 1)}>
+         <Button variant="icon" onClick={() => setPage((prev) => prev + 1)}>
           <ArrowRightIcon strokeWidth={2} className="size-8" />
         </Button>
       ) : null}
