@@ -19,7 +19,7 @@ const Header = () => {
             to={"/"}
             className="flex items-center space-x-3 rtl:space-x-reverse ..."
           >
-            <img src="/pngegg.png" className="h-36" alt="Pokedex logo" />
+            <img src="/Pokedex-02-04-2025.png" className="h-36" alt="Pokedex logo" />
           </NavLink>
         </div>
         <div className="flex flex-row-reverse items-center bg-white px-10 ...">
