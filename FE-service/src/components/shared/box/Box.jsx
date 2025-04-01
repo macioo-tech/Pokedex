@@ -1,14 +1,17 @@
 import { cva } from "class-variance-authority";
 import { cn } from "clsx-for-tailwind";
 
-const boxVariants = cva("flex bg-transparent border border-indigo-800 rounded-lg shadow-lg ", {
+const boxVariants = cva("bg-transparent border border-indigo-800 rounded-lg shadow-lg ", {
   variants: {
     variant: {
-      default: "flex-col place-content-center place-items-center ",
-      card: "relative place-content-center place-items-center  hover:shadow-2xl transition delay-150 duration-300 hover:scale-110",
+      default: "flex flex-col place-content-center place-items-center ",
+      card: "relative place-content-center place-items-center  hover:shadow-2xl transition delay-100 duration-300 hover:scale-110",
+      modal: "fixed grid place-items-center backdrop-blur-sm transition-opacity duration-300 px-40",
+      details: "bg-white grid grid-cols-1 md:grid-cols-2 gap-10", 
     },
     size: {
       default: "h-auto w-full",
+      screen: "h-screen w-screen"
     },
   },
   defaultVariants: {

@@ -1,25 +1,24 @@
-import Title from "../Title";
+import { Box, Stats, Title, CardInfo, Button } from "../../index";
 
-const Details = ({ onClose }) => {
+const Details = ({ onClose, ...item }) => {
+  const { name, img, height, weight, base, ability } = item;
+
   return (
-    <div
-      onClick={onClose}
-      className="fixed overflow-x-hidden overflow-y-auto top-0 right-0 left-0 bottom-0 z-50 place-content-center w-full md: inset-0 h-[calc(100%-1rem)] max-h-full backdrop:blur-lg"
-    >
-      <div className="relative p-4 w-full max-w-2xl max-h-full">
-        <div
-          onClick={(e) => e.stopPropagation()}
-          className="relative bg-white rounded-lg shadow-sm"
-        >
-          <div className="flex flex-col">
-            <Title>Test</Title>
-            <Title>Test</Title>
-            <Title>Test</Title>
-            <Title>Test</Title>
-          </div>
-        </div>
-      </div>
-    </div>
+    <Box variant="modal" size="screen" onClick={onClose}>
+      <Box variant="details" onClick={(e) => e.stopPropagation()}>
+      <Box className="scroll-px-28 ">
+        <img src={img} alt={name} /></Box>
+        <Box className="scroll-px-28 gap-28">
+          <Title>{name}</Title>
+          <CardInfo
+            height={height}
+            weight={weight}
+            base={base}
+            ability={ability}
+          />
+        </Box>
+      </Box>
+    </Box>
   );
 };
 

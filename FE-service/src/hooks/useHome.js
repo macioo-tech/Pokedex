@@ -60,7 +60,7 @@ const useHome = () => {
           weight: item.data.weight,
           base: item.data.base_experience,
           ability: item.data.abilities[0].ability.name,
-          img: item.data.sprites.front_default,
+          img: item.data.sprites.other.dream_world.front_default,
         }));
               
         setPokemons(pokelist);
