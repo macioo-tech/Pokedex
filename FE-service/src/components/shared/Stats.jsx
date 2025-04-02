@@ -1,4 +1,4 @@
-import Box from "./box/Box";
+import Box from "./styled/Box";
 
 const Stats = ({ win, loss }) => {
   return (

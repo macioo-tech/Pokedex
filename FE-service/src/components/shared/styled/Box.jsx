@@ -9,10 +9,12 @@ const boxVariants = cva("bg-transparent border border-indigo-800 rounded-lg shad
       modal: "fixed grid place-items-center backdrop-blur-sm transition-opacity duration-300 px-40",
       details: "bg-white grid grid-cols-1 md:grid-cols-2 gap-10 place-content-center place-items-center",
       column: "flex flex-col md:flex-row place-content-center place-items-center",
+      content: "grid grid-cols-1 md:grid-cols-3 gap-10 justify-between m-10",
     },
     size: {
       default: "h-auto w-full",
-      screen: "h-screen w-screen"
+      screen: "h-screen w-screen",
+      content: ""
     },
   },
   defaultVariants: {

@@ -11,18 +11,18 @@ import Edit from "./subpages/Edit";
 import Ranking from "./subpages/Ranking";
 
 import Search from "./shared/Search";
-import Input from "./shared/Input";
+import Input from "./shared/styled/Input";
 import Menu from "./subpages/Menu";
-import Button from "./shared/Button";
+import Button from "./shared/styled/Button";
 import Loading from "./shared/Loading";
 import Pagination from "./shared/Pagination"
 import Stats from "./shared/Stats"
-import Type from "./shared/Type";
-import Image from "./shared/Image";
+import Type from "./shared/styled/Type";
+import Image from "./shared/styled/Image";
 
-import Card from "./shared/card/Card";
-import CardInfo from "./shared/card/CardInfo";
-import Box from "./shared/box/Box";
+import Card from "./shared/Card";
+import Info from "./shared/Info";
+import Box from "./shared/styled/Box";
 
 import Details from "./shared/modal/Details";
 
@@ -42,7 +42,7 @@ export {
   Search,
   Input,
   Card,
-  CardInfo,
+  Info,
   Loading,
   Pagination,
   Stats,

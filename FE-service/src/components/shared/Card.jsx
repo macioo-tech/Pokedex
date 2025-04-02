@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { createPortal } from "react-dom";
-import { LoginContext } from "../../../context/LoginContext";
-import { Box, Stats, Type, Details, CardInfo, Button, Image } from "../../index";
+import { LoginContext } from "../../context/LoginContext";
+import { Box, Stats, Type, Details, Info, Button, Image } from "../index";
 
 const Card = ({ ...item }) => {
   const [showDetails, setShowDetails] = useState(false);
@@ -21,7 +21,7 @@ const Card = ({ ...item }) => {
       <Button variant="card" size="card" onClick={() => setShowDetails(true)}>
         <Type variant="title">{name}</Type>
         <Image src={img} alt={name} variant="sm"/>
-        <CardInfo
+        <Info
           height={height}
           weight={weight}
           base={base}

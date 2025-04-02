@@ -1,4 +1,4 @@
-import { Box, Stats, Type, CardInfo, Button, Image } from "../../index";
+import { Box, Stats, Type, Info, Button, Image } from "../../index";
 import { HeartIcon, FireIcon } from  "@heroicons/react/16/solid";
 
 const Details = ({ onClose, ...item }) => {
@@ -14,7 +14,7 @@ const Details = ({ onClose, ...item }) => {
             <Button variant="icon"><HeartIcon /></Button>
             <Button variant="icon"><FireIcon /></Button>
           </Box>
-          <CardInfo
+          <Info
             height={height}
             weight={weight}
             base={base}

@@ -1,4 +1,4 @@
-import { Box, Type } from "../../index";
+import { Box, Type } from "../index";
 
 const CardInfo = ({ height, weight, base, ability }) => {
   return (
