@@ -1,4 +1,4 @@
-import { Box, Stats, Title, CardInfo, Button } from "../../index";
+import { Box, Stats, Type, CardInfo, Button, Image } from "../../index";
 
 const Details = ({ onClose, ...item }) => {
   const { name, img, height, weight, base, ability } = item;
@@ -6,10 +6,9 @@ const Details = ({ onClose, ...item }) => {
   return (
     <Box variant="modal" size="screen" onClick={onClose}>
       <Box variant="details" onClick={(e) => e.stopPropagation()}>
-      <Box className="scroll-px-28 ">
-        <img src={img} alt={name} /></Box>
+        <Image src={img} alt={name} />
         <Box className="scroll-px-28 gap-28">
-          <Title>{name}</Title>
+          <Type variant="title">{name}</Type>
           <CardInfo
             height={height}
             weight={weight}

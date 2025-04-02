@@ -14,11 +14,11 @@ import Search from "./shared/Search";
 import Input from "./shared/Input";
 import Menu from "./subpages/Menu";
 import Button from "./shared/Button";
-
 import Loading from "./shared/Loading";
 import Pagination from "./shared/Pagination"
 import Stats from "./shared/Stats"
-import Title from "./shared/Title"
+import Type from "./shared/Type";
+import Image from "./shared/Image";
 
 import Card from "./shared/card/Card";
 import CardInfo from "./shared/card/CardInfo";
@@ -46,7 +46,8 @@ export {
   Loading,
   Pagination,
   Stats,
-  Title,
   Details,
   Box,
+  Type,
+  Image,
 };
