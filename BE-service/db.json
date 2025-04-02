@@ -11,6 +11,36 @@
       "email": "maciek@op.pl",
       "password": "Krokodylek@1",
       "id": 2
+    },
+    {
+      "name": "iwona",
+      "email": "iwona@op.pl",
+      "password": "Krokodylek@1",
+      "id": 3
+    }
+  ],
+
+  "favourites": [
+    {
+      "id": 1,
+      "name": "bulbasaur"
+    }
+
+  ],
+
+  "stats": [
+    {
+      "id": 1,
+      "win": 1,
+      "lost": 1,
+      "name": "bulbasaur"
+    }
+  ],
+
+  "arena": [
+    {
+      "id": 1,
+      "name": "bulbasaur"
     }
   ]
 }

@@ -1,4 +1,5 @@
 import { Box, Stats, Type, CardInfo, Button, Image } from "../../index";
+import { HeartIcon, FireIcon } from  "@heroicons/react/16/solid";
 
 const Details = ({ onClose, ...item }) => {
   const { name, img, height, weight, base, ability } = item;
@@ -9,6 +10,10 @@ const Details = ({ onClose, ...item }) => {
         <Image src={img} alt={name} />
         <Box className="borfder-none shadow-none">
           <Type variant="title">{name}</Type>
+          <Box variant="column">
+            <Button variant="icon"><HeartIcon /></Button>
+            <Button variant="icon"><FireIcon /></Button>
+          </Box>
           <CardInfo
             height={height}
             weight={weight}
