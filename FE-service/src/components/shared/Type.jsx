@@ -4,11 +4,12 @@ import { cn } from "clsx-for-tailwind";
 const typeVariants = cva("bg-transparent text-center font-mono", {
   variants: {
     variant: {
-      default: "",
-      title: "text-2xl font-bold",
+      default: "text-md p-1",
+      bold: "text-md font-bold p-1",
+      title: "text-2xl font-bold p-4",
     },
     size: {
-      default: "p-4",
+      default: "",
       sm: "h-9 p-2",
       lg: "h-11 p-8",
     },

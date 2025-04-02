@@ -7,7 +7,7 @@ const Details = ({ onClose, ...item }) => {
     <Box variant="modal" size="screen" onClick={onClose}>
       <Box variant="details" onClick={(e) => e.stopPropagation()}>
         <Image src={img} alt={name} />
-        <Box className="scroll-px-28 gap-28">
+        <Box className="borfder-none shadow-none">
           <Type variant="title">{name}</Type>
           <CardInfo
             height={height}

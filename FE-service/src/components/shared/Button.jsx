@@ -14,7 +14,7 @@ const buttonVariants = cva("flex place-content-center place-items-center", {
       default: "h-10 p-4",
       sm: "h-9 p-2",
       lg: "h-11 p-8",
-      card: "h-auto w-full p-8",
+      card: "h-auto w-full p-2",
     },
   },
   defaultVariants: {

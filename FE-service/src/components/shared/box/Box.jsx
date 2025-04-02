@@ -4,10 +4,11 @@ import { cn } from "clsx-for-tailwind";
 const boxVariants = cva("bg-transparent border border-indigo-800 rounded-lg shadow-lg ", {
   variants: {
     variant: {
-      default: "flex flex-col place-content-center place-items-center ",
+      default: "flex flex-col place-content-center place-items-center p-4",
       card: "relative place-content-center place-items-center  hover:shadow-2xl transition delay-100 duration-300 hover:scale-110",
       modal: "fixed grid place-items-center backdrop-blur-sm transition-opacity duration-300 px-40",
-      details: "bg-white grid grid-cols-1 md:grid-cols-2 gap-10",
+      details: "bg-white grid grid-cols-1 md:grid-cols-2 gap-10 place-content-center place-items-center",
+      column: "flex flex-col md:flex-row place-content-center place-items-center",
     },
     size: {
       default: "h-auto w-full",
