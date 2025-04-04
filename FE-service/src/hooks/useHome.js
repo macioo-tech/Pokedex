@@ -5,7 +5,6 @@ import { PokemonContext } from "../context/PokemonContext";
 const useHome = (onSuccess) => {
   const [homeError, setHomeError] = useState(false);
   const [homeLoading, setHomeLoading] = useState(true);
-  const [homeLength, setHomeLength] = useState(0);
   const { setPokeList } = useContext(PokemonContext);
 
   useEffect(() => {
@@ -20,7 +19,6 @@ const useHome = (onSuccess) => {
         );
         setPokeList(names);     
         onSuccess(names);
-        setHomeLength(names.length);
         setHomeLoading(false);
       } catch (error) {
         setHomeError(error);
@@ -37,7 +35,6 @@ const useHome = (onSuccess) => {
   return {
     homeError,
     homeLoading,
-    homeLength,
   };
 };
 

@@ -1,37 +1,70 @@
-import { ArrowRightIcon, ArrowLeftIcon } from "@heroicons/react/24/outline";
+import { ForwardIcon, BackwardIcon } from "@heroicons/react/16/solid";
+import Box from "./styled/Box";
 import Button from "./styled/Button";
+import Type from "./styled/Type";
 
-const Pagination = ({ length, limit, page, setPage }) => {
-  const enablePrev = page !== 0;
-  const enableNext = page !== limit;
+const Pagination = ({ totalPages, currentPage, setCurrentPage }) => {
+  if (totalPages == 1) return <></>;
 
-  if (limit == 0 || limit == undefined) return;
+  const disablePrev = currentPage <= 1;
+  const disableNext = currentPage >= totalPages;
 
   return (
-    <div className="flex justify-center items-center gap-2 pb-10 font-mono text-xl">
-      {enablePrev ? (
-        <>
-          <Button variant="icon" onClick={() => setPage(1)}>
-            {"<<"}
+    <Box
+      variant="column"
+      size="content"
+      className="border-none shadow-none text-xl"
+    >
+      {!disablePrev ? (
+        <Box variant="row" size="content" className="border-none shadow-none">
+          <Button
+            className="px-2"
+            variant="icon"
+            size="lg"
+            onClick={() => setCurrentPage(1)}
+          >
+            <BackwardIcon strokeWidth={2} className="size-6" />
+            <BackwardIcon strokeWidth={2} className="size-6" />
           </Button>
-          <Button variant="icon" onClick={() => setPage((prev) => prev - 1)}>
-            {"<"}
+          <Button
+            className="px-2"
+            variant="icon"
+            size="lg"
+            onClick={() => setCurrentPage((prev) => prev - 1)}
+          >
+            <BackwardIcon strokeWidth={2} className="size-6" />
           </Button>
-        </>
-      ) : null}
-      Page <strong>{page + 1}</strong> of
-      <strong>{Math.floor((length + 1) / limit)}</strong>
-      {enableNext ? (
-        <>
-          <Button variant="icon" onClick={() => setPage((prev) => prev + 1)}>
-            {">"}
+        </Box>
+      ) : (
+        null
+      )}
+      <Type>
+        Page {currentPage} of {totalPages}
+      </Type>
+      {!disableNext ? (
+        <Box variant="row" size="content" className="border-none shadow-none">
+          <Button
+            className="px-2"
+            variant="icon"
+            size="lg"
+            onClick={() => setCurrentPage((prev) => prev + 1)}
+          >
+            <ForwardIcon strokeWidth={2} className="size-6" />
           </Button>
-          <Button variant="icon" onClick={() => setPage(limit)}>
-            {">>"}
+          <Button
+            className="px-2"
+            variant="icon"
+            size="lg"
+            onClick={() => setCurrentPage(totalPages)}
+          >
+            <ForwardIcon strokeWidth={2} className="size-6" />
+            <ForwardIcon strokeWidth={2} className="size-6" />
           </Button>
-        </>
-      ) : null}
-    </div>
+        </Box>
+      ) : (
+        null
+      )}
+    </Box>
   );
 };
 

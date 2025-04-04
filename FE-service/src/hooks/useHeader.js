@@ -5,8 +5,7 @@ const useHeader = (onSuccess) => {
   const [headerError, setHeaderError] = useState(false);
   const [headerLoading, setHeaderLoading] = useState(false);
   const [query, setQuery] = useState("");
-  const [queryList, setQueryList] = useState([])
-  const { pokeList } = useContext(PokemonContext);
+  const { pokeList, setQueryPokeList } = useContext(PokemonContext);
 
   useEffect(() => {
     const loadPokemons = async () => {
@@ -18,7 +17,7 @@ const useHeader = (onSuccess) => {
         const names = [...pokeList].filter((name) =>
           name.toLowerCase().includes(query.toLocaleLowerCase())
         ); 
-        setQueryList(names);
+        setQueryPokeList(names);
         onSuccess(names);
         setHeaderLoading(false);
       } catch (error) {
@@ -31,13 +30,12 @@ const useHeader = (onSuccess) => {
     return () => {
       setHeaderLoading(false);
     };
-  }, [onSuccess, query, pokeList]);
+  }, [onSuccess, query, pokeList, setQueryPokeList]);
 
   return {
     headerError,
     headerLoading,
     setQuery,
-    queryList
   };
 };
 

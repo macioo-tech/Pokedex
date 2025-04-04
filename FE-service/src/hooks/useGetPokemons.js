@@ -3,10 +3,9 @@ import { PokemonContext } from "../context/PokemonContext";
 import { PokeApi } from "../services/api";
 
 const useGetPokemons = () => {
-  const { setPokemons } = useContext(PokemonContext);
+  const { setPokemons, currentPage } = useContext(PokemonContext);
   const [getError, setGetError] = useState(false);
   const [getLoading, setGetLoading] = useState(true);
-  const [isPage, setPage] = useState(0);
   const maxPerPage = 15;
 
   const loadPokemons = useCallback(
@@ -16,7 +15,7 @@ const useGetPokemons = () => {
       setGetLoading(true);
 
       try {
-        const offset = maxPerPage * isPage;
+        const offset = maxPerPage * (currentPage - 1);
         const pages = arrayPokemons.slice(offset, offset + maxPerPage);
         const promises = pages.map((name) =>
           PokeApi.get(`/pokemon/${name}`)
@@ -40,7 +39,7 @@ const useGetPokemons = () => {
         setGetLoading(false);
       }
     },
-    [isPage, setPokemons]
+    [currentPage, setPokemons]
   );
 
   useEffect(() => {
@@ -53,9 +52,6 @@ const useGetPokemons = () => {
   return {
     getError,
     getLoading,
-    maxPerPage,
-    isPage,
-    setPage,
     refetch: loadPokemons,
   };
 };

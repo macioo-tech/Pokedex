@@ -1,11 +1,12 @@
 import { useContext } from "react";
 import { PokemonContext } from "../../context/PokemonContext";
-import Box from "../shared/styled/Box"
-import Card from "../shared/Card"
+import Box from "../shared/styled/Box";
+import Card from "../shared/Card";
 import Pagination from "./Pagination";
 
-const Content = ({length, limit, page, setPage}) => {
-    const { pokemons } = useContext(PokemonContext);
+const Content = () => {
+  const { pokemons, queryPokeList, currentPage, setCurrentPage } =
+    useContext(PokemonContext);
 
   return (
     <>
@@ -15,10 +16,9 @@ const Content = ({length, limit, page, setPage}) => {
         ))}
       </Box>
       <Pagination
-        length={length}
-        limit={limit}
-        page={page}
-        setPage={setPage}
+        totalPages={Math.ceil(queryPokeList.length / 15)}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
       />
     </>
   );
