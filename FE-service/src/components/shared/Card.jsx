@@ -13,8 +13,6 @@ const Card = ({ ...item }) => {
     document.body
   );
 
-  console.log(setShowDetails);
-
   return (
     <Box variant="card">
       {!isLoggedIn && <Stats win={1} loss={1} />}

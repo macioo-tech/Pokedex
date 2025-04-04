@@ -7,7 +7,6 @@ const useGetPokemons = () => {
   const [getError, setGetError] = useState(false);
   const [getLoading, setGetLoading] = useState(true);
   const [isPage, setPage] = useState(0);
-  const [query, setQuery] = useState("");
   const maxPerPage = 15;
 
   const loadPokemons = useCallback(
@@ -18,14 +17,8 @@ const useGetPokemons = () => {
 
       try {
         const offset = maxPerPage * isPage;
-        let pagePokemons = arrayPokemons.slice(offset, offset + maxPerPage);
-
-        if (query !== "") {
-          pagePokemons = pagePokemons.filter((name) =>
-            name.toLowerCase().includes(query.toLowerCase())
-          );
-        }
-        const promises = pagePokemons.map((name) =>
+        const pages = arrayPokemons.slice(offset, offset + maxPerPage);
+        const promises = pages.map((name) =>
           PokeApi.get(`/pokemon/${name}`)
         );
 
@@ -47,7 +40,7 @@ const useGetPokemons = () => {
         setGetLoading(false);
       }
     },
-    [isPage, query, setPokemons]
+    [isPage, setPokemons]
   );
 
   useEffect(() => {
@@ -63,8 +56,6 @@ const useGetPokemons = () => {
     maxPerPage,
     isPage,
     setPage,
-    query,
-    setQuery,
     refetch: loadPokemons,
   };
 };

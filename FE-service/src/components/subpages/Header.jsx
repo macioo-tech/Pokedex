@@ -3,14 +3,18 @@ import { Menus } from "../../services/menus";
 import { MagnifyingGlassIcon } from "@heroicons/react/16/solid";
 import { Search, Menu } from "../index";
 import useGetPokemons from "../../hooks/useGetPokemons";
+import useHeader from "../../hooks/useHeader";
 
 const Header = () => {
-  const { setQuery, refetch } = useGetPokemons();
+  const { refetch } = useGetPokemons();
+  const { queryList, setQuery } = useHeader(refetch);
 
   const handleChange = (value) => {
     setQuery(value);
-    refetch();
   };
+
+  console.log("queryList", queryList);
+  
 
   return (
     <>
@@ -20,7 +24,11 @@ const Header = () => {
             to={"/"}
             className="flex items-center space-x-3 rtl:space-x-reverse ..."
           >
-            <img src="/Pokedex-02-04-2025.png" className="h-36" alt="Pokedex logo" />
+            <img
+              src="/Pokedex-02-04-2025.png"
+              className="h-36"
+              alt="Pokedex logo"
+            />
           </NavLink>
         </div>
         <div className="flex flex-row-reverse items-center bg-white px-10 ...">
