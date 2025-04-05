@@ -34,6 +34,12 @@
       "win": 1,
       "lost": 1,
       "name": "bulbasaur"
+    },
+    {
+      "id": 2,
+      "win": 3,
+      "lost": 15,
+      "name": "kakuna"
     }
   ],
 

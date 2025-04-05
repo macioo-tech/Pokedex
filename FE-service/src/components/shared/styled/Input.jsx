@@ -10,7 +10,7 @@ const Input = ({ name, label, icon, ...props }) => {
   const errorMessage = errors[name]?.message;
 
   return (
-    <Box variant="row" className="text-indigo-800 p-2">
+    <Box variant="icon" border="yes">
       {icon}
       <input
         type="text"

@@ -3,7 +3,7 @@ import Input from "./styled/Input";
 
 const Search = ({ icon, ...props }) => {
   return (
-    <Box variant="row" className="text-indigo-800 p-2">
+    <Box variant="icon" border="yes">
       {icon}
       <input
         type="text"

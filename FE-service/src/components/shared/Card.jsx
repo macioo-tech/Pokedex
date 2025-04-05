@@ -14,7 +14,7 @@ const Card = ({ ...item }) => {
   );
 
   return (
-    <Box variant="card">
+    <Box variant="card" border="yes" hover="yes" shadow="yes">
       {showStats && <Stats win={win} loss={lost} />}
       <Button variant="card" size="card" onClick={() => setShowDetails(true)}>
         <Type variant="title">{name}</Type>

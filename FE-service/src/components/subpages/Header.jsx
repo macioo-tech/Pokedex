@@ -31,7 +31,7 @@ const Header = () => {
           </NavLink>
         </div>
         <div className="flex flex-row-reverse items-center px-10">
-          <Switch />
+          {/* <Switch /> */}
           {Menus?.map((menu) => (
             <Menu key={menu.name} menu={menu} />
           ))}

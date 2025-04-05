@@ -10,7 +10,7 @@ const Content = () => {
 
   return (
     <>
-      <Box variant="content" size="content" className="border-none shadow-none">
+      <Box variant="content" size="content">
         {pokemons.map((item) => (
           <Card key={item.id} {...item} />
         ))}
