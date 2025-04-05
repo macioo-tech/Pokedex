@@ -10,11 +10,13 @@ import {
 import { useContext } from "react";
 import { LoginContext } from "../../../context/LoginContext";
 import useStats from "../../../hooks/useStats";
-import usePostFavourites from "../../../hooks/usePostFavourites";
+import useDetailsFavourites from "../../../hooks/useDetailsFavourites";
+import useDetailsArena from "../../../hooks/useDetailsArena";
 
 const Details = ({ onClose, ...item }) => {
   const { win, lost, showStats } = useStats(item);
-  const { isFavourite } = usePostFavourites(item);
+  const { isFavourite } = useDetailsFavourites(item);
+  const { isInArena, isTotalInArena } = useDetailsArena(item);
   const { isLoggedIn } = useContext(LoginContext);
   const { name, img, height, weight, base, ability } = item;
 
@@ -42,7 +44,12 @@ const Details = ({ onClose, ...item }) => {
                 )}
               </Button>
               <Button variant="icon">
-                <FireOutline strokeWidth={2} className="size-14" />
+                {isInArena ? (
+                  <FireSolid strokeWidth={2} className="size-14" />
+                ) : (
+                  <FireOutline strokeWidth={2} className="size-14" />
+                )}
+                <Type>{isTotalInArena} / 2</Type>
               </Button>
             </Box>
           )}

@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { LoginContext } from "../context/LoginContext";
 import { LocalApi } from "../services/api";
 
-const usePostFavourites = (item) => {
+const useDetailsFavourites = (item) => {
     const { isLoggedIn } = useContext(LoginContext);
     const [isFavourite, setIsFavourite] = useState(false);
 
@@ -24,4 +24,4 @@ const usePostFavourites = (item) => {
   return { isFavourite,  setIsFavourite };
 };
 
-export default usePostFavourites;
+export default useDetailsFavourites;
