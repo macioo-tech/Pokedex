@@ -13,6 +13,8 @@ import Ranking from "./subpages/Ranking";
 import Search from "./shared/Search";
 import Input from "./shared/styled/Input";
 import Menu from "./subpages/Menu";
+import SubMenu from "./subpages/SubMenu"
+import SubMenuItem from "./subpages/SubMenuItem";
 import Button from "./shared/styled/Button";
 import Loading from "./shared/Loading";
 import Pagination from "./shared/Pagination"
@@ -39,6 +41,8 @@ export {
   Ranking,
   Button,
   Menu,
+  SubMenu,
+  SubMenuItem,
   Search,
   Input,
   Card,

@@ -1,11 +1,11 @@
 import { Box, Stats, Type, Info, Button, Image } from "../../index";
 import {
   HeartIcon as HeartSolid,
-  FireIcon as FireSolid,
+  PuzzlePieceIcon as ArenaSolid,
 } from "@heroicons/react/16/solid";
 import {
   HeartIcon as HeartOutline,
-  FireIcon as FireOutline,
+  PuzzlePieceIcon as ArenaOutline,
 } from "@heroicons/react/24/outline";
 import { useContext } from "react";
 import { LoginContext } from "../../../context/LoginContext";
@@ -39,37 +39,53 @@ const Details = ({ onClose, ...item }) => {
         onClick={(e) => e.stopPropagation()}
       >
         {showStats && <Stats win={win} loss={lost} />}
-        <Image src={img} alt={name} />
-        <Box>
-          <Type variant="title">{name}</Type>
-          <Info height={height} weight={weight} base={base} ability={ability} />
-          {isLoggedIn && (
-            <Box variant="column">
-              <Button
-                size="xl"
-                fc="red"
-                onClick={() => toggleFavourite(isFavourite, item, event)}
-              >
-                {isFavourite ? (
-                  <HeartSolid className="size-14" />
-                ) : (
-                  <HeartOutline className="size-14" />
-                )}
-              </Button>
-              <Button
-                size="xl"
-                fc="red"
-                onClick={() => toggleArena(isInArena, item, event)}
-              >
-                {isInArena ? (
-                  <FireSolid className="size-14" />
-                ) : (
-                  <FireOutline className="size-14" />
-                )}
-                <Type>{isTotalInArena} / 2</Type>
-              </Button>
-            </Box>
-          )}
+        <Box variant="row">
+          <Image src={img} alt={name} />
+          <Box>
+            <Type variant="title">{name}</Type>
+            <Info
+              height={height}
+              weight={weight}
+              base={base}
+              ability={ability}
+            />
+            {isLoggedIn && (
+              <Box variant="column">
+                <Box>
+                  <Button
+                  size="xl"
+                  fc="poke"
+                  onClick={() => toggleFavourite(isFavourite, item, event)}
+                >
+                  {isFavourite ? (
+                    <HeartSolid className="size-14" />
+                  ) : (
+                    <HeartOutline className="size-14" />
+                  )}
+                </Button>
+                <Type>{isFavourite ? "Remove from" : "Add to"}</Type>
+                <Type>Favourites</Type>
+                </Box>
+                <Box variant="column">
+                  <Box>
+                    <Button
+                      size="xl"
+                      fc="poke"
+                      onClick={() => toggleArena(isInArena, item, event)}
+                    >
+                      {isInArena ? (
+                        <ArenaSolid className="size-14" />                   
+                      ) : (
+                        <ArenaOutline className="size-14" />
+                      )}
+                    </Button>
+                    <Type>{isInArena ? "Remove from" : "Add to"}</Type>
+                    <Type>Arena {isTotalInArena}/2</Type>
+                  </Box>
+                </Box>
+              </Box>
+            )}
+          </Box>
         </Box>
       </Box>
     </Box>

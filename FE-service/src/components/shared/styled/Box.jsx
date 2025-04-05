@@ -2,26 +2,28 @@ import { cva } from "class-variance-authority";
 import { cn } from "clsx-for-tailwind";
 
 const boxVariants = cva(
-  "flex flex-col place-content-center place-items-center p-4 gap-4",
+  "flex flex-col place-content-center place-items-center p-4 gap-2",
   {
     variants: {
       variant: {
         default: "",
         card: "relative",
         modal:
-          "fixed grid place-items-center backdrop-blur-sm transition-opacity duration-300 px-40",
+          "fixed grid place-items-center backdrop-blur-sm backdrop-opacity-50 transition-opacity duration-300 px-40",
         details: "relative place-content-center place-items-center",
         column:
           "flex flex-col md:flex-row place-content-center place-items-center",
         icon: "flex flex-row place-content-center place-items-center text-indigo-800",
         content: "grid grid-cols-1 md:grid-cols-3 gap-10 justify-between",
         header: "grid grid-cols-1 md:grid-cols-2 gap-10 justify-between",
-        row: "flex flex-row place-content-center place-items-center justyfy-between"
+        row: "flex felx-col md:flex-row place-content-center place-items-center justyfy-between",
+        submenu: "absolute top-[5rem] right-[5rem] p-[15px] rounded-[6px]",
+
       },
       size: {
         default: "h-auto w-full",
         screen: "h-screen w-screen",
-        content: "",
+        content: "h-auto w-auto",
       },
       bg: {
         default: "bg-transparent",
