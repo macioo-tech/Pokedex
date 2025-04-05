@@ -1,5 +1,5 @@
 import { useForm, FormProvider } from "react-hook-form";
-import { Input, Button } from "../index";
+import { Input, Button, Box, Type } from "../index";
 import { AtSymbolIcon, LockClosedIcon } from "@heroicons/react/16/solid";
 import { NavLink } from "react-router-dom";
 import useLogin from "../../hooks/useLogin";
@@ -16,20 +16,16 @@ const Login = () => {
   const { handleSubmit } = methods;
 
   return (
-    <div className="flex flex-col justify-center items-center">
-      <div className="text-[1.5rem] font-mono font-bold py-10">
-        Log into your account
-      </div>
+    <Box border="yes" shadow="yes">
+      <Type variant="title">Log into your account</Type>
       <FormProvider {...methods}>
-        <form
-          onSubmit={handleSubmit(onSubmit)}
-          className="flex flex-col justify-center items-center p-10 gap-y-10 border border-indigo-800 rounded-lg shadow-lg "
-        >
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <Box size="content">
           <Input
             name="email"
             label="email"
             icon={
-              <AtSymbolIcon className={`text-indigo-800 h-10 cursor-pointer`} />
+              <AtSymbolIcon className="size-10" />
             }
           />
           <Input
@@ -37,20 +33,21 @@ const Login = () => {
             label="password"
             icon={
               <LockClosedIcon
-                className={`text-indigo-800 h-10 cursor-pointer`}
+                className="size-10"
               />
             }
             type="password"
           />
-          <div>
+          <Box variant="row">
             <Button type="submit">Log in</Button>
             <Button>
               <NavLink to="/signup">Sign up</NavLink>
             </Button>
-          </div>
+          </Box>
+          </Box>
         </form>
       </FormProvider>
-    </div>
+    </Box>
   );
 };
 

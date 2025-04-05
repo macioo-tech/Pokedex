@@ -19,15 +19,16 @@
       "id": 3
     }
   ],
-
   "favourites": [
     {
       "id": 1,
       "name": "bulbasaur"
+    },
+    {
+      "name": "ivysaur",
+      "id": 2
     }
-
   ],
-
   "stats": [
     {
       "id": 1,
@@ -42,11 +43,14 @@
       "name": "kakuna"
     }
   ],
-
   "arena": [
     {
       "id": 1,
       "name": "bulbasaur"
+    },
+    {
+      "name": "charmeleon",
+      "id": 2
     }
   ]
 }

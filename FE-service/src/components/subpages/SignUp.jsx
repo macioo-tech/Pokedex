@@ -1,6 +1,6 @@
 import { useForm, FormProvider } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Input, Button } from "../index";
+import { Input, Button, Box, Type } from "../index";
 import { schemaUsers } from "../../services/schemas";
 import { NavLink } from "react-router-dom";
 import {
@@ -26,27 +26,23 @@ const SignUp = () => {
   const { handleSubmit } = methods;
 
   return (
-    <div className="flex flex-col justify-center items-center">
-      <div className="text-[1.5rem] font-mono font-bold py-10">
-        Sign up your account
-      </div>
+    <Box border="yes" shadow="yes">
+      <Type variant="title">Sign up your account</Type>
       <FormProvider {...methods}>
-        <form
-          onSubmit={handleSubmit(onSubmit)}
-          className="flex flex-col justify-center items-center p-10 gap-y-10 border border-indigo-800 rounded-lg shadow-lg "
-        >
+        <form onSubmit={handleSubmit(onSubmit)}>
+        <Box size="content">
           <Input
             name="name"
             label="Name or nickname"
             icon={
-              <UserPlusIcon className={`text-indigo-800 h-10 cursor-pointer`} />
+              <UserPlusIcon className="size-10"/>
             }
           />
           <Input
             name="email"
             label="example@example.com"
             icon={
-              <AtSymbolIcon className={`text-indigo-800 h-10 cursor-pointer`} />
+              <AtSymbolIcon className="size-10"/>
             }
           />
           <Input
@@ -54,9 +50,7 @@ const SignUp = () => {
             type="password"
             label="Password"
             icon={
-              <LockClosedIcon
-                className={`text-indigo-800 h-10 cursor-pointer`}
-              />
+              <LockClosedIcon className="size-10"/>
             }
           />
           <Input
@@ -65,19 +59,19 @@ const SignUp = () => {
             label="Confirm password"
             icon={
               <LockClosedIcon
-                className={`text-indigo-800 h-10 cursor-pointer`}
-              />
+                className="size-10"/>
             }
           />
-          <div>
-            <Button type="submit">Sign up</Button>{" "}
+          <Box variant="row">
+            <Button type="submit">Sign up</Button>
             <Button>
               <NavLink to="/login">Log in</NavLink>
             </Button>
-          </div>
+          </Box>
+          </Box>
         </form>
       </FormProvider>
-    </div>
+    </Box>
   );
 };
 

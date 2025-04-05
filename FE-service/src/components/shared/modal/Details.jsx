@@ -10,13 +10,22 @@ import {
 import { useContext } from "react";
 import { LoginContext } from "../../../context/LoginContext";
 import useStats from "../../../hooks/useStats";
-import useDetailsFavourites from "../../../hooks/useDetailsFavourites";
-import useDetailsArena from "../../../hooks/useDetailsArena";
+import useFetchFavourites from "../../../hooks/useFetchFavourites";
+import useFetchArena from "../../../hooks/useFetchArena";
+import useAddToFavourites from "../../../hooks/useAddToFavourites";
+import useAddToArena from "../../../hooks/useAddArena";
 
 const Details = ({ onClose, ...item }) => {
   const { win, lost, showStats } = useStats(item);
-  const { isFavourite } = useDetailsFavourites(item);
-  const { isInArena, isTotalInArena } = useDetailsArena(item);
+  const { refFavourite, isFavourite, refetchFavourites } =
+    useFetchFavourites(item);
+  const { toggleFavourite } = useAddToFavourites(
+    refetchFavourites,
+    refFavourite
+  );
+  const { refArena, isInArena, isTotalInArena, refetchArena } =
+    useFetchArena(item);
+  const { toggleArena } = useAddToArena(refetchArena, refArena, isTotalInArena);
   const { isLoggedIn } = useContext(LoginContext);
   const { name, img, height, weight, base, ability } = item;
 
@@ -36,18 +45,26 @@ const Details = ({ onClose, ...item }) => {
           <Info height={height} weight={weight} base={base} ability={ability} />
           {isLoggedIn && (
             <Box variant="column">
-              <Button variant="icon">
+              <Button
+                size="xl"
+                fc="red"
+                onClick={() => toggleFavourite(isFavourite, item, event)}
+              >
                 {isFavourite ? (
-                  <HeartSolid strokeWidth={2} className="size-14" />
+                  <HeartSolid className="size-14" />
                 ) : (
-                  <HeartOutline strokeWidth={2} className="size-14" />
+                  <HeartOutline className="size-14" />
                 )}
               </Button>
-              <Button variant="icon">
+              <Button
+                size="xl"
+                fc="red"
+                onClick={() => toggleArena(isInArena, item, event)}
+              >
                 {isInArena ? (
-                  <FireSolid strokeWidth={2} className="size-14" />
+                  <FireSolid className="size-14" />
                 ) : (
-                  <FireOutline strokeWidth={2} className="size-14" />
+                  <FireOutline className="size-14" />
                 )}
                 <Type>{isTotalInArena} / 2</Type>
               </Button>

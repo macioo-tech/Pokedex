@@ -16,7 +16,7 @@ const Menu = ({ menu }) => {
     <>
       {showItem && (
         <>
-          <Button onMouseEnter={() => setShowSubItem(true)}>
+          <Button fc="poke" onMouseEnter={() => setShowSubItem(true)}>
             <menu.icon strokeWidth={2} className="size-14" />
           </Button>
           {showSubItem && (

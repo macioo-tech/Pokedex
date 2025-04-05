@@ -11,28 +11,23 @@ const Pagination = ({ totalPages, currentPage, setCurrentPage }) => {
 
   return (
     <Box
-      variant="column"
+      variant="row"
       size="content"
-      className="border-none shadow-none text-xl"
     >
       {!disablePrev ? (
-        <Box variant="row" size="content" className="border-none shadow-none">
+        <Box variant="row">
           <Button
-            className="px-2"
-            variant="icon"
-            size="lg"
+            size="xl"
             onClick={() => setCurrentPage(1)}
           >
-            <BackwardIcon strokeWidth={2} className="size-6" />
-            <BackwardIcon strokeWidth={2} className="size-6" />
+            <BackwardIcon className="size-8" />
+            <BackwardIcon className="size-8" />
           </Button>
           <Button
-            className="px-2"
-            variant="icon"
-            size="lg"
+            size="xl"
             onClick={() => setCurrentPage((prev) => prev - 1)}
           >
-            <BackwardIcon strokeWidth={2} className="size-6" />
+            <BackwardIcon className="size-8" />
           </Button>
         </Box>
       ) : (
@@ -42,23 +37,19 @@ const Pagination = ({ totalPages, currentPage, setCurrentPage }) => {
         Page {currentPage} of {totalPages}
       </Type>
       {!disableNext ? (
-        <Box variant="row" size="content" className="border-none shadow-none">
+        <Box variant="row">
           <Button
-            className="px-2"
-            variant="icon"
-            size="lg"
+            size="xl"
             onClick={() => setCurrentPage((prev) => prev + 1)}
           >
-            <ForwardIcon strokeWidth={2} className="size-6" />
+            <ForwardIcon strokeWidth={2} className="size-8" />
           </Button>
           <Button
-            className="px-2"
-            variant="icon"
-            size="lg"
+            size="xl"
             onClick={() => setCurrentPage(totalPages)}
           >
-            <ForwardIcon strokeWidth={2} className="size-6" />
-            <ForwardIcon strokeWidth={2} className="size-6" />
+            <ForwardIcon strokeWidth={2} className="size-8" />
+            <ForwardIcon strokeWidth={2} className="size-8" />
           </Button>
         </Box>
       ) : (

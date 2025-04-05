@@ -10,17 +10,19 @@ const Input = ({ name, label, icon, ...props }) => {
   const errorMessage = errors[name]?.message;
 
   return (
-    <Box variant="icon" border="yes">
-      {icon}
-      <input
-        type="text"
-        placeholder={label}
-        {...register(name)}
-        {...props}
-        className="w-full bg-transparent border-none outline-none text-xl ml-1 placeholder:text-gray-500 text-black"
-      />
-      {errorMessage && <p className="text-red-600 text-sm">{errorMessage}</p>}
-    </Box>
+    <div>
+      <Box variant="icon" border="yes">
+        {icon}
+        <input
+          type="text"
+          placeholder={label}
+          {...register(name)}
+          {...props}
+          className="min-w-96 bg-transparent border-none outline-none text-xl ml-1 placeholder:text-gray-500 text-black"
+        />
+      </Box>
+      {errorMessage && <p className="text-red-500 text-sm">{errorMessage}</p>}
+    </div>
   );
 };
 

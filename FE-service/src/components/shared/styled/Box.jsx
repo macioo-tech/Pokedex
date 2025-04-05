@@ -2,7 +2,7 @@ import { cva } from "class-variance-authority";
 import { cn } from "clsx-for-tailwind";
 
 const boxVariants = cva(
-  "flex flex-col place-content-center place-items-center p-4",
+  "flex flex-col place-content-center place-items-center p-4 gap-4",
   {
     variants: {
       variant: {
@@ -16,6 +16,7 @@ const boxVariants = cva(
         icon: "flex flex-row place-content-center place-items-center text-indigo-800",
         content: "grid grid-cols-1 md:grid-cols-3 gap-10 justify-between",
         header: "grid grid-cols-1 md:grid-cols-2 gap-10 justify-between",
+        row: "flex flex-row place-content-center place-items-center justyfy-between"
       },
       size: {
         default: "h-auto w-full",

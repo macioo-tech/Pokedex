@@ -8,7 +8,7 @@ const Search = ({ icon, ...props }) => {
       <input
         type="text"
         {...props}
-        className="w-full bg-transparent border-none outline-none text-xl ml-1 placeholder:text-gray-500 text-black"
+        className="bg-transparent border-none outline-none text-xl ml-1 placeholder:text-gray-500 text-black"
       />
     </Box>
   );

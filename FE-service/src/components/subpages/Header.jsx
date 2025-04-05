@@ -37,7 +37,7 @@ const Header = () => {
           ))}
           <div className="flex items-center p-4 ...">
             <Search
-              icon={<MagnifyingGlassIcon strokeWidth={2} className="size-10" />}
+              icon={<MagnifyingGlassIcon className="size-10" />}
               placeholder="Search your Pokemon"
               onChange={(e) => handleChange(e.target.value)}
             />
