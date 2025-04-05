@@ -7,7 +7,7 @@ import { LockClosedIcon } from "@heroicons/react/16/solid";
 import { IdentificationIcon } from "@heroicons/react/16/solid";
 import { PencilSquareIcon } from "@heroicons/react/16/solid";
 import { PresentationChartLineIcon } from "@heroicons/react/16/solid";
-import { PlayCircleIcon } from "@heroicons/react/16/solid";
+import {PuzzlePieceIcon} from "@heroicons/react/16/solid";
 
 export const Menus = [
     {
@@ -49,7 +49,7 @@ export const Menus = [
             },
             {
                 name: "Arena",
-                icon: PlayCircleIcon,
+                icon: PuzzlePieceIcon,
                 loginRequired: true,
                 path: "arena",
             },

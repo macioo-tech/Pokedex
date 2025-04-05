@@ -1,8 +1,6 @@
 import { useContext } from "react";
 import { PokemonContext } from "../../context/PokemonContext";
-import Box from "../shared/styled/Box";
-import Card from "../shared/Card";
-import Pagination from "./Pagination";
+import { Box, Card, Pagination } from "../index"
 
 const Content = () => {
   const { pokemons, queryPokeList, currentPage, setCurrentPage } =

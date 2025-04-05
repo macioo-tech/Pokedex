@@ -21,10 +21,6 @@
   ],
   "favourites": [
     {
-      "id": 1,
-      "name": "bulbasaur"
-    },
-    {
       "name": "ivysaur",
       "id": 2
     }
@@ -43,14 +39,5 @@
       "name": "kakuna"
     }
   ],
-  "arena": [
-    {
-      "name": "charmander",
-      "id": 1
-    },
-    {
-      "name": "charmeleon",
-      "id": 2
-    }
-  ]
+  "arena": []
 }
