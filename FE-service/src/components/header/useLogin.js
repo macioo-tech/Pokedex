@@ -1,7 +1,7 @@
 import { useContext } from "react";
-import { LoginContext } from "../context/LoginContext";
+import { LoginContext } from "../../context/LoginContext";
 import { enqueueSnackbar } from "notistack";
-import { LocalApi } from "../services/api";
+import { LocalApi } from "../../services/api";
 import { useNavigate } from "react-router-dom";
 
 const useLogin = () => {

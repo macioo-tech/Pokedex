@@ -8,7 +8,7 @@ import {
   AtSymbolIcon,
   LockClosedIcon,
 } from "@heroicons/react/16/solid";
-import useSignUp from "../../hooks/useSignUp";
+import { useSignUp } from "./hooks"
 
 const SignUp = () => {
   const { onSubmit } = useSignUp();

@@ -12,19 +12,18 @@ import ContentArena from "./arena/ContentArena";
 
 import Header from "./header/Header";
 import Search from "./header/Search";
+import Login from "./header/Login";
+import Logout from "./header/Logout";
+import SignUp from "./header/SignUp";
+import Menu from "./header/Menu";
+import SubMenu from "./header/SubMenu"
+import SubMenuItem from "./header/SubMenuItem";
 
-import Home from "./subpages/Home";
-import Login from "./subpages/Login";
-import Logout from "./subpages/Logout";
-import SignUp from "./subpages/SignUp";
+import Home from "./home/Home";
 
 import Favourites from "./favourites/Favourites";
-import Edit from "./subpages/Edit";
-import Ranking from "./subpages/Ranking";
-
-import Menu from "./subpages/Menu";
-import SubMenu from "./subpages/SubMenu"
-import SubMenuItem from "./subpages/SubMenuItem";
+import Edit from "./edit/Edit";
+import Ranking from "./ranking/Ranking";
 
 import Input from "./shared/Input";
 import Button from "./shared/Button";

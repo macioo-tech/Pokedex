@@ -2,7 +2,7 @@ import { useContext, useEffect, useState, useCallback } from "react";
 import { PokemonContext } from "../context/PokemonContext";
 import { PokeApi } from "../services/api";
 
-const useGetPokemons = () => {
+const usePokemons = () => {
   const { setPokemons, currentPage } = useContext(PokemonContext);
   const [getError, setGetError] = useState(false);
   const [getLoading, setGetLoading] = useState(true);
@@ -55,4 +55,4 @@ const useGetPokemons = () => {
   };
 };
 
-export default useGetPokemons;
+export default usePokemons;

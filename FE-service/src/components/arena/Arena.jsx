@@ -1,9 +1,8 @@
-import { useArena } from "./hooks";
+import { useArena, usePokemons } from "./hooks";
 import { Loading, ContentArena } from "../index";
-import useGetPokemons from "../../hooks/useGetPokemons";
 
 const Arena = () => {
-  const { getError, getLoading, refetch } = useGetPokemons();
+  const { getError, getLoading, refetch } = usePokemons();
   const { arenaError, arenaLoading } = useArena(refetch);
 
   if (arenaLoading || getLoading) return <Loading />;

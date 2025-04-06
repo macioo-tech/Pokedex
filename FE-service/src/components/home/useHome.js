@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
-import { PokeApi } from "../services/api";
-import { PokemonContext } from "../context/PokemonContext";
+import { PokeApi } from "../../services/api";
+import { PokemonContext } from "../../context/PokemonContext";
 
 const useHome = (onSuccess) => {
   const [homeError, setHomeError] = useState(false);
