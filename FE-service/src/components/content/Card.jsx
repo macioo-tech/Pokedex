@@ -4,9 +4,9 @@ import { Box, Stats, Type, Details, Info, Button, Image } from "../index";
 import { useStats } from "../modal/hooks"
 
 const Card = ({ ...item }) => {
-  const { win, lost, showStats } = useStats(item);
+  const { win, lost, experience, showStats } = useStats(item);
   const [showDetails, setShowDetails] = useState(false);
-  const { name, img, height, weight, base, ability } = item;
+  const { name, img, height, weight, ability } = item;
 
   const modal = createPortal(
     <Details {...item} onClose={() => setShowDetails(false)} />,
@@ -26,7 +26,7 @@ const Card = ({ ...item }) => {
       <Button variant="card" size="card" hover="no" onClick={() => setShowDetails(true)}>
         <Type variant="title">{name}</Type>
         <Image src={img} alt={name} variant="sm" />
-        <Info height={height} weight={weight} base={base} ability={ability} />
+        <Info height={height} weight={weight} base={experience} ability={ability} />
       </Button>
       {showDetails && modal}
     </Box>

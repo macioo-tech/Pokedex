@@ -6,6 +6,7 @@ import Info from "./content/Info";
 import Stats from "./content/Stats"
 import Pagination from "./content/Pagination"
 import Loading from "./content/Loading";
+import EmptyContent from "./content/EmptyContent";
 
 import Arena from "./arena/Arena";
 import ContentArena from "./arena/ContentArena";
@@ -61,4 +62,5 @@ export {
   Image,
   Content,
   ContentArena,
+  EmptyContent,
 };

@@ -1,18 +1,19 @@
 import { useArena, usePokemons } from "./hooks";
-import { Loading, ContentArena } from "../index";
+import { ContentArena, Loading, Box, EmptyContent } from "../index";
 
 const Arena = () => {
   const { getError, getLoading, refetch } = usePokemons();
   const { arenaError, arenaLoading } = useArena(refetch);
 
-  if (arenaLoading || getLoading) return <Loading />;
-  if (arenaError || getError) return <p>...Netwrok error occured</p>;
+  if (arenaLoading || getLoading)
+    return (
+      <Box size="screen">
+        <Loading />
+      </Box>
+    );
+  if (arenaError || getError) return <EmptyContent />;
 
-  return (
-    <div>
-      <ContentArena />
-    </div>
-  );
+  return <ContentArena />;
 };
 
 export default Arena;

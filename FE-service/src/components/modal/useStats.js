@@ -1,46 +1,48 @@
-import { useContext, useEffect, useState } from "react";
-import { LocalApi } from "../../services/api";
+import { useCallback, useContext, useEffect, useState } from "react";
 import { LoginContext } from "../../context/LoginContext";
+import { LocalApi } from "../../services/api";
 
 const useStats = (item) => {
-  const { isLoggedIn } = useContext(LoginContext);
-  const [statsError, setstatsError] = useState(false);
-  const [statsLoading, setStatsLoading] = useState(true);
   const [showStats, setShowStats] = useState(false);
   const [win, setWin] = useState(0);
   const [lost, setLost] = useState(0);
+  const [experience, setExperience] = useState(item.base || 0);
+  const { isLoggedIn } = useContext(LoginContext);
 
-  useEffect(() => {
-    if (item?.name == undefined || !isLoggedIn) return;
-
-    const loadPokemons = async () => {
-      setStatsLoading(true);
+  const fetchStats = useCallback(
+    async (item) => {
+      if (item?.name == undefined) return;
+      if (!isLoggedIn) {
+        setShowStats(false);
+        return;
+      }
       try {
         const response = await LocalApi.get(`/stats/?name=${item.name}`);
         if (response.data?.length > 0) {
           setWin(response.data[0]?.win);
           setLost(response.data[0]?.lost);
+          setExperience(response.data[0]?.experience);
           setShowStats(true);
-          setStatsLoading(false);
         }
-      } catch (error) {
-        setstatsError(error);
-      } finally {
-        setStatsLoading(false);
+      } catch {
+        setWin(0);
+        setLost(0);
       }
-    };
-    loadPokemons();
-    return () => {
-      setStatsLoading(false);
-    };
-  }, [item.name, isLoggedIn]);
+    },
+    [isLoggedIn]
+  );
+
+  useEffect(() => {
+    fetchStats(item);
+    return () => {};
+  }, [item, fetchStats]);
 
   return {
-    statsError,
-    statsLoading,
     win,
     lost,
+    experience,
     showStats,
+    refetchStats: fetchStats,
   };
 };
 

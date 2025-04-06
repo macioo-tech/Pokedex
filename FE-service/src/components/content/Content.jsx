@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { PokemonContext } from "../../context/PokemonContext";
-import { Box, Card, Type, Pagination } from "../index"
+import { Box, Card, Pagination, EmptyContent } from "../index";
 
 const Content = () => {
   const { pokemons, queryPokeList, currentPage, setCurrentPage } =
@@ -8,11 +8,10 @@ const Content = () => {
 
   if (queryPokeList?.length === 0 || queryPokeList == undefined) {
     return (
-      <Box size="screen">
-        <Type variant="focus" color="inactive">Couldn't find your pokemons</Type>
-        <Type>Search another pokemon</Type>
-      </Box>
-    )
+      <EmptyContent
+        hint="Try searching another pokemon or refresh the page"
+      />
+    );
   }
 
   return (

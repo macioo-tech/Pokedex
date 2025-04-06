@@ -1,5 +1,5 @@
-import { useFavourites, usePokemons } from "./hooks"
-import { Content, Loading, Box } from "../index";
+import { useFavourites, usePokemons } from "./hooks";
+import { Content, Loading, Box, EmptyContent } from "../index";
 
 const Favourites = () => {
   const { getError, getLoading, refetch } = usePokemons();
@@ -11,7 +11,7 @@ const Favourites = () => {
         <Loading />
       </Box>
     );
-  if (favouritesError || getError) return <p>...Netwrok error occured</p>;
+  if (favouritesError || getError) return <EmptyContent />;
 
   return <Content />;
 };

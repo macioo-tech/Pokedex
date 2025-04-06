@@ -1,5 +1,5 @@
-import { useHome, usePokemons } from "./hooks"
-import { Content, Loading, Box } from "../index";
+import { useHome, usePokemons } from "./hooks";
+import { Content, Loading, Box, EmptyContent } from "../index";
 
 const Home = () => {
   const { getError, getLoading, refetch } = usePokemons();
@@ -11,7 +11,7 @@ const Home = () => {
         <Loading />
       </Box>
     );
-  if (getError || homeError) return <p>...Netwrok error occured</p>;
+  if (getError || homeError) return <EmptyContent />
 
   return <Content />;
 };

@@ -22,22 +22,35 @@
   "favourites": [],
   "stats": [
     {
-      "id": 1,
-      "win": 1,
+      "win": 3,
       "lost": 1,
-      "name": "bulbasaur"
+      "experience": 94,
+      "name": "bulbasaur",
+      "id": 1
     },
     {
       "id": 2,
       "win": 3,
       "lost": 15,
+      "experience": 102,
       "name": "kakuna"
+    },
+    {
+      "win": 1,
+      "lost": 0,
+      "experience": 277,
+      "name": "charizard",
+      "id": 3
     }
   ],
   "arena": [
     {
+      "name": "charmander",
+      "id": 5
+    },
+    {
       "name": "charizard",
-      "id": 2
+      "id": 6
     }
   ]
 }
