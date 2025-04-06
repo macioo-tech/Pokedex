@@ -19,12 +19,7 @@
       "id": 3
     }
   ],
-  "favourites": [
-    {
-      "name": "bulbasaur",
-      "id": 1
-    }
-  ],
+  "favourites": [],
   "stats": [
     {
       "id": 1,
@@ -39,5 +34,10 @@
       "name": "kakuna"
     }
   ],
-  "arena": []
+  "arena": [
+    {
+      "name": "charizard",
+      "id": 2
+    }
+  ]
 }

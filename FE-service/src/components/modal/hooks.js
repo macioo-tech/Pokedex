@@ -1,4 +1,4 @@
-import useAddToArena from "./useAddArena";
+import useAddToArena from "./useAddToArena";
 import useAddToFavourites from "./useAddToFavourites"
 import useFetchArena from "./useFetchArena";
 import useFetchFavourites from "./useFetchFavourites"

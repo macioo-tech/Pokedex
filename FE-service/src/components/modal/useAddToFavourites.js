@@ -1,8 +1,7 @@
 import { useContext } from "react";
-import { LoginContext } from "../../context/LoginContext"
+import { LoginContext } from "../../context/LoginContext";
 import { enqueueSnackbar } from "notistack";
 import { LocalApi } from "../../services/api";
-import { timeout } from "../../services/utils";
 
 const useAddToFavourites = (onSuccess, refFavourite) => {
   const { isLoggedIn } = useContext(LoginContext);
@@ -20,29 +19,26 @@ const useAddToFavourites = (onSuccess, refFavourite) => {
             "Content-Type": "application/json",
           },
         });
+        await onSuccess(data);
         enqueueSnackbar(`Pokemon ${data.name} added to Favourites`, {
           variant: "success",
         });
       } catch {
         enqueueSnackbar(`Something went wrong`, { variant: "error" });
-      } finally {
-        onSuccess(data);
       }
     } else {
       try {
         await LocalApi.delete(`/favourites/${refFavourite}`);
+        await onSuccess(data);
         enqueueSnackbar(`Pokemon ${data.name} removed from Favourites`, {
           variant: "warning",
         });
-        await timeout(2000);
       } catch {
         enqueueSnackbar(`Something went wrong`, { variant: "error" });
-      } finally {
-        onSuccess(data);
       }
     }
   };
-  return { toggleFavourite:onEvent };
+  return { toggleFavourite: onEvent };
 };
 
 export default useAddToFavourites;

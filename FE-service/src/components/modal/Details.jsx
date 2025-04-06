@@ -30,7 +30,7 @@ const Details = ({ onClose, ...item }) => {
   const { toggleArena } = useAddToArena(refetchArena, refArena, isTotalInArena);
   const { isLoggedIn } = useContext(LoginContext);
   const { name, img, height, weight, base, ability } = item;
-
+  
   return (
     <Box variant="modal" size="screen" onClick={onClose}>
       <Box
