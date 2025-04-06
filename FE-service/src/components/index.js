@@ -1,32 +1,38 @@
 import Layout from "./layout/Layout";
 
+import Content from "./content/Content";
+import Card from "./content/Card";
+import Info from "./content/Info";
+import Stats from "./content/Stats"
+import Pagination from "./content/Pagination"
+import Loading from "./content/Loading";
+
+import Arena from "./arena/Arena";
+import ContentArena from "./arena/ContentArena";
+
+import Header from "./header/Header";
+import Search from "./header/Search";
+
 import Home from "./subpages/Home";
-import Header from "./subpages/Header";
 import Login from "./subpages/Login";
 import Logout from "./subpages/Logout";
 import SignUp from "./subpages/SignUp";
-import Arena from "./subpages/Arena";
-import Favourites from "./subpages/Favourites";
+
+import Favourites from "./favourites/Favourites";
 import Edit from "./subpages/Edit";
 import Ranking from "./subpages/Ranking";
 
-import Search from "./shared/Search";
-import Input from "./shared/styled/Input";
 import Menu from "./subpages/Menu";
 import SubMenu from "./subpages/SubMenu"
 import SubMenuItem from "./subpages/SubMenuItem";
-import Button from "./shared/styled/Button";
-import Loading from "./shared/Loading";
-import Pagination from "./shared/Pagination"
-import Stats from "./shared/Stats"
-import Type from "./shared/styled/Type";
-import Image from "./shared/styled/Image";
 
-import Card from "./shared/Card";
-import Info from "./shared/Info";
-import Box from "./shared/styled/Box";
+import Input from "./shared/Input";
+import Button from "./shared/Button";
+import Type from "./shared/Type";
+import Image from "./shared/Image";
+import Box from "./shared/Box";
 
-import Details from "./shared/modal/Details";
+import Details from "./modal/Details";
 
 export {
   Layout,
@@ -54,4 +60,6 @@ export {
   Box,
   Type,
   Image,
+  Content,
+  ContentArena,
 };

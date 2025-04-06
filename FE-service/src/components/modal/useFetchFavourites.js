@@ -1,6 +1,6 @@
 import { useCallback, useRef, useContext, useEffect, useState } from "react";
-import { LoginContext } from "../context/LoginContext";
-import { LocalApi } from "../services/api";
+import { LoginContext } from "../../context/LoginContext";
+import { LocalApi } from "../../services/api";
 
 const useFetchFavourites = (item) => {
   const { isLoggedIn } = useContext(LoginContext);

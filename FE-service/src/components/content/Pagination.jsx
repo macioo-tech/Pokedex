@@ -1,7 +1,5 @@
 import { ForwardIcon, BackwardIcon } from "@heroicons/react/16/solid";
-import Box from "./styled/Box";
-import Button from "./styled/Button";
-import Type from "./styled/Type";
+import { Type, Button, Box } from "../index";
 
 const Pagination = ({ totalPages, currentPage, setCurrentPage }) => {
   if (totalPages == 1) return <></>;

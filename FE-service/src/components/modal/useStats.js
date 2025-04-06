@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
-import { LocalApi } from "../services/api";
-import { LoginContext } from "../context/LoginContext";
+import { LocalApi } from "../../services/api";
+import { LoginContext } from "../../context/LoginContext";
 
 const useStats = (item) => {
   const { isLoggedIn } = useContext(LoginContext);

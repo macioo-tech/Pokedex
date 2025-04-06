@@ -7,21 +7,23 @@ const typeVariants = cva("bg-transparent text-center font-mono", {
       default: "text-md p-1",
       bold: "text-md font-bold p-1",
       title: "text-2xl font-bold p-4",
+      focus: "text-7xl p-8",
     },
-    size: {
+    color: {
       default: "",
-      sm: "h-9 p-2",
-      lg: "h-11 p-8",
-    },
+      poke: "text-indigo-800",
+      inactive: "text-gray-200",
+    }
   },
   defaultVariants: {
     variant: "default",
     size: "default",
+    color: "default",
   },
 });
 
-const Type = ({ className, children, variant, size, ...props }) => {
-  const typeClasses = cn(typeVariants({ variant, size, className }));
+const Type = ({ className, children, variant, color, ...props }) => {
+  const typeClasses = cn(typeVariants({ variant, color, className }));
 
   return <div type="button" {...props} className={typeClasses} >{children}</div>;
 };

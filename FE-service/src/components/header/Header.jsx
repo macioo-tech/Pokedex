@@ -1,13 +1,9 @@
 import { NavLink } from "react-router-dom";
 import { Menus } from "../../services/menus";
 import { MagnifyingGlassIcon } from "@heroicons/react/16/solid";
+import { Search, Menu, Box, Button } from "../index"
 import useGetPokemons from "../../hooks/useGetPokemons";
-import useHeader from "../../hooks/useHeader";
-import Search from "../shared/Search";
-import Menu from "./Menu";
-import Switch from "../shared/Switch";
-import Box from "../shared/styled/Box";
-import Button from "../shared/styled/Button";
+import useHeader from "./useHeader";
 
 const Header = () => {
   const { refetch } = useGetPokemons();

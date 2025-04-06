@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
-import { PokemonContext } from "../context/PokemonContext";
-import { LocalApi } from "../services/api";
+import { PokemonContext } from "../../context/PokemonContext";
+import { LocalApi } from "../../services/api";
 
 const useArena = (onSuccess) => {
   const [arenaError, setArenaError] = useState(false);

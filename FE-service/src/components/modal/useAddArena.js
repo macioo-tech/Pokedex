@@ -1,26 +1,31 @@
 import { useContext } from "react";
-import { LoginContext } from "../context/LoginContext";
+import { LoginContext } from "../../context/LoginContext";
 import { enqueueSnackbar } from "notistack";
-import { LocalApi } from "../services/api";
-import { timeout } from "../services/utils";
+import { LocalApi } from "../../services/api";
+import { timeout } from "../../services/utils";
 
-const useAddToFavourites = (onSuccess, refFavourite) => {
+const useAddToArena = (onSuccess, refArena, isTotalInArena) => {
   const { isLoggedIn } = useContext(LoginContext);
+  const maxArenaTotal = 2;
 
-  const onEvent = async (isFavourite, item, event) => {
+  const onEvent = async (isInArena, item, event) => {
     if (!isLoggedIn || item.name == undefined) return;
     event.preventDefault();
     const data = {
       name: item.name,
     };
-    if (!isFavourite) {
+    if (!isInArena) {
+      if (isTotalInArena >= maxArenaTotal) {
+        enqueueSnackbar(`Arena is full. Remove other pokemons first.`, { variant: "warning" });
+        return;
+      }
       try {
-        await LocalApi.post(`/favourites`, data, {
+        await LocalApi.post(`/arena`, data, {
           headers: {
             "Content-Type": "application/json",
           },
         });
-        enqueueSnackbar(`Pokemon ${data.name} added to Favourites`, {
+        enqueueSnackbar(`Pokemon ${data.name} added to Arena`, {
           variant: "success",
         });
       } catch {
@@ -30,8 +35,8 @@ const useAddToFavourites = (onSuccess, refFavourite) => {
       }
     } else {
       try {
-        await LocalApi.delete(`/favourites/${refFavourite}`);
-        enqueueSnackbar(`Pokemon ${data.name} removed from Favourites`, {
+        await LocalApi.delete(`/arena/${refArena}`);
+        enqueueSnackbar(`Pokemon ${data.name} removed from Arena`, {
           variant: "warning",
         });
         await timeout(2000);
@@ -42,7 +47,7 @@ const useAddToFavourites = (onSuccess, refFavourite) => {
       }
     }
   };
-  return { toggleFavourite:onEvent };
+  return { toggleArena:onEvent };
 };
 
-export default useAddToFavourites;
+export default useAddToArena;

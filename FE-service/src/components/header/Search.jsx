@@ -1,5 +1,4 @@
-import Box from "./styled/Box";
-import Input from "./styled/Input";
+import { Box } from "../index";
 
 const Search = ({ icon, ...props }) => {
   return (

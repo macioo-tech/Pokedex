@@ -1,4 +1,3 @@
-import Box from "./styled/Box";
 
 const Stats = ({ win, loss }) => {
   return (

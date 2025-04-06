@@ -1,4 +1,4 @@
-import { Box, Stats, Type, Info, Button, Image } from "../../index";
+import { Box, Stats, Type, Info, Button, Image } from "../index";
 import {
   HeartIcon as HeartSolid,
   PuzzlePieceIcon as ArenaSolid,
@@ -8,12 +8,14 @@ import {
   PuzzlePieceIcon as ArenaOutline,
 } from "@heroicons/react/24/outline";
 import { useContext } from "react";
-import { LoginContext } from "../../../context/LoginContext";
-import useStats from "../../../hooks/useStats";
-import useFetchFavourites from "../../../hooks/useFetchFavourites";
-import useFetchArena from "../../../hooks/useFetchArena";
-import useAddToFavourites from "../../../hooks/useAddToFavourites";
-import useAddToArena from "../../../hooks/useAddArena";
+import { LoginContext } from "../../context/LoginContext";
+import {
+  useStats,
+  useFetchFavourites,
+  useAddToFavourites,
+  useFetchArena,
+  useAddToArena,
+} from "./hooks.js";
 
 const Details = ({ onClose, ...item }) => {
   const { win, lost, showStats } = useStats(item);
@@ -53,18 +55,18 @@ const Details = ({ onClose, ...item }) => {
               <Box variant="column">
                 <Box>
                   <Button
-                  size="xl"
-                  fc="poke"
-                  onClick={() => toggleFavourite(isFavourite, item, event)}
-                >
-                  {isFavourite ? (
-                    <HeartSolid className="size-14" />
-                  ) : (
-                    <HeartOutline className="size-14" />
-                  )}
-                </Button>
-                <Type>{isFavourite ? "Remove from" : "Add to"}</Type>
-                <Type>Favourites</Type>
+                    size="xl"
+                    fc="poke"
+                    onClick={() => toggleFavourite(isFavourite, item, event)}
+                  >
+                    {isFavourite ? (
+                      <HeartSolid className="size-14" />
+                    ) : (
+                      <HeartOutline className="size-14" />
+                    )}
+                  </Button>
+                  <Type>{isFavourite ? "Remove from" : "Add to"}</Type>
+                  <Type>Favourites</Type>
                 </Box>
                 <Box variant="column">
                   <Box>
@@ -74,7 +76,7 @@ const Details = ({ onClose, ...item }) => {
                       onClick={() => toggleArena(isInArena, item, event)}
                     >
                       {isInArena ? (
-                        <ArenaSolid className="size-14" />                   
+                        <ArenaSolid className="size-14" />
                       ) : (
                         <ArenaOutline className="size-14" />
                       )}

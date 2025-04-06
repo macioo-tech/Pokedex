@@ -21,7 +21,7 @@ const boxVariants = cva(
 
       },
       size: {
-        default: "h-auto w-full",
+        default: "h-full w-full",
         screen: "h-screen w-screen",
         content: "h-auto w-auto",
       },

@@ -10,16 +10,16 @@ const useGetPokemons = () => {
 
   const loadPokemons = useCallback(
     async (arrayPokemons) => {
-      if (arrayPokemons?.length === 0 || arrayPokemons == undefined) return;
-
+      if (arrayPokemons == undefined) return;
+      if (arrayPokemons?.length === 0) {
+        setPokemons([]);
+        return;
+      }
       setGetLoading(true);
-
       try {
         const offset = maxPerPage * (currentPage - 1);
         const pages = arrayPokemons.slice(offset, offset + maxPerPage);
-        const promises = pages.map((name) =>
-          PokeApi.get(`/pokemon/${name}`)
-        );
+        const promises = pages.map((name) => PokeApi.get(`/pokemon/${name}`));
 
         const datalist = await Promise.all(promises);
         const pokelist = [...datalist].map((item) => ({
@@ -31,7 +31,6 @@ const useGetPokemons = () => {
           ability: item.data.abilities[0].ability.name,
           img: item.data.sprites.other.dream_world.front_default,
         }));
-
         setPokemons(pokelist);
       } catch (error) {
         setGetError(error);
