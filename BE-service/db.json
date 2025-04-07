@@ -25,6 +25,7 @@
       "win": 3,
       "lost": 1,
       "experience": 94,
+      "strength": 6486,
       "name": "bulbasaur",
       "id": 1
     },
@@ -33,14 +34,24 @@
       "win": 3,
       "lost": 15,
       "experience": 102,
+      "strength": 10200,
       "name": "kakuna"
     },
     {
-      "win": 1,
-      "lost": 0,
-      "experience": 277,
       "name": "charizard",
+      "experience": 137,
+      "strength": 114935,
+      "win": 6,
+      "lost": 0,
       "id": 3
+    },
+    {
+      "name": "charmander",
+      "experience": 62,
+      "strength": 5270,
+      "lost": 6,
+      "win": 0,
+      "id": 4
     }
   ],
   "arena": [

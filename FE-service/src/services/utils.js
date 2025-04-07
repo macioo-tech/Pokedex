@@ -1,53 +1,67 @@
-import { LocalApi } from "./api";
+import { postItem, putItem } from "./api";
 
 export const timeout = (ms) => {
   return new Promise((resolve) => setTimeout(resolve, ms));
 };
 
-export const findWinner = async (array, winStats, winName) => {
+export const findWinner = async (api, array, winStats) => {
   let max = 0;
   for (let i = 0; i < array.length; i++) {
-    const response = await LocalApi.get(`/stats/?name=${array[i].name}`);
+    const response = await api.get(`/stats/?name=${array[i].name}`);
     if (response.data?.length > 0) {
-      if (response.data[0]?.experience > max) {
+      if (response.data[0]?.experience * array[i].weight > max) {
         winStats = response?.data[0];
-        winName = array[i].name;
-        max = response.data[0]?.experience;
+        max = response.data[0]?.experience * array[i].weight;
       }
     } else {
-      if (array[i].base > max) {
-        winStats, winName = {
+      if (array[i].base * array[i].weight > max) {
+        winStats = {
           name: array[i].name,
           experience: array[i].base,
+          strength: array[i].base * array[i].weight, 
+          win: 0,
+          lost: 0,
         };
-        max = array[i].base;
-        winName = array[i].name;
+        max = array[i].base * array[i].weight;
       }
     }
   }
-  return [winStats, winName];
+  return winStats;
 };
 
-export const findLooser = async (array, lostStats, lostName) => {
+export const findLooser = async (api, array, lostStats) => {
   let min = Infinity;
   for (let i = 0; i < array.length; i++) {
-    const response = await LocalApi.get(`/stats/?name=${array[i].name}`);
+    const response = await api.get(`/stats/?name=${array[i].name}`);
     if (response.data?.length > 0) {
-      if (response.data[0]?.experience < min) {
+      if (response.data[0]?.experience * array[i].weight < min) {
         lostStats = response?.data[0];
-        lostName = array[i].name;
         min = response.data[0]?.experience;
       }
     } else {
-      if (array[i].base < min) {
-        lostStats, lostName = {
+      if (array[i].base * array[i].weight < min) {
+        lostStats = {
           name: array[i].name,
           experience: array[i].base,
+          strength: array[i].base * array[i].weight, 
+          win: 0,
+          lost: 0,
         };
-        min = array[i].base;
-        lostName = array[i].name;
+        min = array[i].base * array[i].weight;
       }
     }
   }
-  return [lostStats, lostName];
+  return lostStats;
+};
+
+export const updateStats = async (api, stats) => {
+  try {
+    if (stats.id > 0) {
+      await putItem(api, 'stats', stats.id, stats)
+    } else {
+      await postItem(api, 'stats', stats)
+    }
+  } catch (error) {
+    return error;
+  }
 };

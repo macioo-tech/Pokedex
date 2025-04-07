@@ -7,3 +7,35 @@ export const PokeApi = axios.create({
 export const LocalApi = axios.create({
   baseURL: "http://localhost:3000",
 });
+
+export const deleteItem = async (api, path, id) => {
+  try {
+    await api.delete(`/${path}/${id}`);
+  } catch (error) {
+    return error;
+  }
+};
+
+export const putItem = async (api, path, id, data) => {
+  try {
+    await api.put(`/${path}/${id}`, data, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+  } catch (error) {
+    return error;
+  }
+};
+
+export const postItem = async (api, path, data) => {
+  try {
+    await api.post(`/${path}`, data, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+  } catch (error) {
+    return error;
+  }
+};
