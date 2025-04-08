@@ -52,16 +52,40 @@
       "lost": 6,
       "win": 0,
       "id": 4
+    },
+    {
+      "name": "venusaur",
+      "experience": 273,
+      "strength": 263000,
+      "win": 1,
+      "lost": 0,
+      "id": 5
+    },
+    {
+      "name": "blastoise",
+      "experience": 265,
+      "strength": 226575,
+      "win": 0,
+      "lost": 1,
+      "id": 6
     }
   ],
   "arena": [
     {
-      "name": "charmander",
-      "id": 5
+      "name": "venusaur",
+      "id": 1
     },
     {
-      "name": "charizard",
-      "id": 6
+      "name": "blastoise",
+      "id": 2
     }
+  ],
+  "edits": [
+    {
+      "name": "bulbasaur",
+      "experience": 80,
+      "id": 1
+    }
+    
   ]
 }
