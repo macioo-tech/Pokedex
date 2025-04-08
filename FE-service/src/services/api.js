@@ -8,6 +8,16 @@ export const LocalApi = axios.create({
   baseURL: "http://localhost:3000",
 });
 
+export const getItems = async (api, path) => {
+  try {
+    const response = await api.get(`/${path}`);
+    if (response?.data?.isArray()) return response.data[0];
+    return response?.data?.results
+  } catch (error) {
+    return error
+  }
+};
+
 export const deleteItem = async (api, path, id) => {
   try {
     await api.delete(`/${path}/${id}`);

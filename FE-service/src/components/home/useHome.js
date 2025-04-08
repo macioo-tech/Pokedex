@@ -14,6 +14,8 @@ const useHome = (onSuccess) => {
         const response = await PokeApi.get(
           `/pokemon?limit=${150}&offset=${0}`
         );
+        console.log(response);
+        
         const names = [...(response.data?.results || [])].map(
           (item) => item.name
         );
