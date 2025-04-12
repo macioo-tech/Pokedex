@@ -2,11 +2,10 @@ import { NavLink } from "react-router-dom";
 import { Menus } from "../../services/menus";
 import { MagnifyingGlassIcon } from "@heroicons/react/16/solid";
 import { Search, Menu, Box, Button } from "../index"
-import { useHeader, usePokemons } from "./hooks"
+import { useHeader } from "./hooks"
 
 const Header = () => {
-  const { refetch } = usePokemons();
-  const { setQuery } = useHeader(refetch);
+  const { setQuery } = useHeader();
 
   const handleChange = (value) => {
     setQuery(value);

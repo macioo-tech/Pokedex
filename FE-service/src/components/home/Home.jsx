@@ -1,17 +1,11 @@
-import { useHome, usePokemons } from "./hooks";
+import { useHome } from "./hooks";
 import { Content, Loading, Box, EmptyContent } from "../index";
 
 const Home = () => {
-  const { getError, getLoading, refetch } = usePokemons();
-  const { homeError, homeLoading } = useHome(refetch);
+  const { error, loading } = useHome();
 
-  if (getLoading || homeLoading)
-    return (
-      <Box size="screen">
-        <Loading />
-      </Box>
-    );
-  if (getError || homeError) return <EmptyContent />
+  if (loading) return <Box size="screen"><Loading /></Box>;
+  if (error) return <EmptyContent />
 
   return <Content />;
 };

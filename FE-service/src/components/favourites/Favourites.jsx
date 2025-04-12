@@ -1,17 +1,11 @@
-import { useFavourites, usePokemons } from "./hooks";
+import { useFavourites } from "./hooks";
 import { Content, Loading, Box, EmptyContent } from "../index";
 
 const Favourites = () => {
-  const { getError, getLoading, refetch } = usePokemons();
-  const { favouritesError, favouritesLoading } = useFavourites(refetch);
+  const { loading, error } = useFavourites();
 
-  if (favouritesLoading || getLoading)
-    return (
-      <Box size="screen">
-        <Loading />
-      </Box>
-    );
-  if (favouritesError || getError) return <EmptyContent />;
+  if (loading) return <Box size="screen"><Loading /></Box>;
+  if (error) return <EmptyContent />
 
   return <Content />;
 };

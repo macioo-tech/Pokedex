@@ -1,17 +1,11 @@
-import { useArena, usePokemons } from "./hooks";
+import { useArena } from "./hooks";
 import { ContentArena, Loading, Box, EmptyContent } from "../index";
 
 const Arena = () => {
-  const { getError, getLoading, refetch } = usePokemons();
-  const { arenaError, arenaLoading } = useArena(refetch);
+  const { error, loading } = useArena();
 
-  if (arenaLoading || getLoading)
-    return (
-      <Box size="screen">
-        <Loading />
-      </Box>
-    );
-  if (arenaError || getError) return <EmptyContent />;
+  if (loading) return (<Box size="screen"><Loading /></Box>);
+  if (error) return <EmptyContent />;
 
   return <ContentArena />;
 };

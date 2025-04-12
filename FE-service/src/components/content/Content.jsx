@@ -1,10 +1,14 @@
 import { useContext } from "react";
 import { PokemonContext } from "../../context/PokemonContext";
-import { Box, Card, Pagination, EmptyContent } from "../index";
+import { Box, Card, Pagination, EmptyContent, Loading } from "../index";
+import { useFetchPokemons } from "./hooks";
 
 const Content = () => {
-  const { pokemons, queryPokeList, currentPage, setCurrentPage } =
-    useContext(PokemonContext);
+  const { queryPokeList } = useContext(PokemonContext);
+  const { pokemons, loading, error, currentPage, setCurrentPage } = useFetchPokemons();
+
+  if (loading) return <Box size="screen"><Loading /></Box>;
+  if (error) return <EmptyContent />
 
   if (queryPokeList?.length === 0 || queryPokeList == undefined) {
     return (

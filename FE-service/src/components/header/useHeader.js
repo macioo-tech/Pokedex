@@ -1,9 +1,9 @@
 import { useContext, useEffect, useState } from "react";
 import { PokemonContext } from "../../context/PokemonContext";
 
-const useHeader = (onSuccess) => {
-  const [headerError, setHeaderError] = useState(false);
-  const [headerLoading, setHeaderLoading] = useState(false);
+const useHeader = () => {
+  const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [query, setQuery] = useState("");
   const { pokeList, setQueryPokeList } = useContext(PokemonContext);
 
@@ -15,29 +15,28 @@ const useHeader = (onSuccess) => {
         return;
       }
       if (query == undefined) return;
-      setHeaderLoading(true);
+      setLoading(true);
       try {
         const names = [...pokeList].filter((name) =>
           name.toLowerCase().includes(query.toLocaleLowerCase())
         );
         setQueryPokeList(names);
-        onSuccess(names);
-        setHeaderLoading(false);
+        setLoading(false);
       } catch (error) {
-        setHeaderError(error);
+        setError(error);
       } finally {
-        setHeaderLoading(false);
+        setLoading(false);
       }
     };
     loadPokemons();
     return () => {
-      setHeaderLoading(false);
+      setLoading(false);
     };
-  }, [onSuccess, query, pokeList, setQueryPokeList]);
+  }, [query, pokeList, setQueryPokeList]);
 
   return {
-    headerError,
-    headerLoading,
+    error,
+    loading,
     setQuery,
   };
 };

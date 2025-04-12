@@ -2,35 +2,34 @@ import { useContext, useEffect, useState } from "react";
 import { PokemonContext } from "../../context/PokemonContext";
 import { getItems, LocalApi } from "../../services/api";
 
-const useFavourites = (onSuccess) => {
-  const [favouritesError, setFavouritesError] = useState(false);
-  const [favouritesLoading, setFavouritesLoading] = useState(true);
+const useFavourites = () => {
+  const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(true);
   const { setPokeList } = useContext(PokemonContext);
 
   useEffect(() => {
     const loadPokemons = async () => {
-      setFavouritesLoading(true);
+      setLoading(true);
       try {
         const data = await getItems(LocalApi, `favourites`);
         const names = data.map((item) => item.name);
         setPokeList(names);  
-        onSuccess(names);
-        setFavouritesLoading(false);
+        setLoading(false);
       } catch (error) {
-        setFavouritesError(error);
+        setError(error);
       } finally {
-        setFavouritesLoading(false);
+        setLoading(false);
       }
     };
     loadPokemons();
     return () => {
-      setFavouritesLoading(false);
+      setLoading(false);
     };
-  }, [onSuccess]);
+  }, [setPokeList]);
 
   return {
-    favouritesError,
-    favouritesLoading,
+    error,
+    loading,
   };
 };
 

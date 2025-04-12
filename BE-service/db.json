@@ -22,12 +22,12 @@
   "favourites": [],
   "arena": [
     {
-      "name": "charmander",
-      "id": 1
-    },
-    {
       "name": "charizard",
       "id": 2
+    },
+    {
+      "name": "charmander",
+      "id": 3
     }
   ],
   "edits": [

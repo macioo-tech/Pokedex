@@ -1,11 +1,13 @@
-import { useContext } from "react";
-import { PokemonContext } from "../../context/PokemonContext";
+
 import { Box, Card, Type, Button, Loading } from "../index";
-import { useArenaBattle } from "./hooks"
+import { useArenaBattle, useFetchPokemons } from "./hooks"
 
 const ContentArena = () => {
-  const { pokemons } = useContext(PokemonContext);
+  const { pokemons, loading, error } = useFetchPokemons();
   const { battleInProgress, startBattle } = useArenaBattle();
+  
+  if (loading) return <Box size="screen"><Loading /></Box>;
+  if (error) return <EmptyContent />
 
   return (
     <Box>
