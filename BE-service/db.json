@@ -23,12 +23,20 @@
     {
       "name": "charmeleon",
       "id": 1
+    },
+    {
+      "name": "wartortle",
+      "id": 2
     }
   ],
   "arena": [
     {
-      "name": "bulbasaur",
+      "name": "wartortle",
       "id": 1
+    },
+    {
+      "name": "charmeleon",
+      "id": 2
     }
   ],
   "edits": [
@@ -43,14 +51,14 @@
       "id": 2
     },
     {
-      "name": "charizard",
-      "win": 1,
-      "experience": 277,
+      "name": "wartortle",
+      "win": 3,
+      "experience": 172,
       "id": 3
     },
     {
-      "name": "charmander",
-      "lost": 1,
+      "name": "charmeleon",
+      "lost": 3,
       "id": 4
     }
   ],

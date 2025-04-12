@@ -37,7 +37,7 @@ export const updateWin = async (api, pokemon) => {
   
 
   try {
-    const data = await getItems(api, `edits/${name}`);
+    const data = await getItems(api, `edits/?name=${name}`);
     if (data.length > 0) {
       await putItem(api, `edits`, data[0].id, stats);
     } else {
@@ -56,7 +56,7 @@ export const updateLost = async (api, pokemon) => {
   };
 
   try {
-    const data = await getItems(api, `edits/${name}`);
+    const data = await getItems(api, `edits/?name=${name}`);
     if (data.length > 0) {
       await putItem(api, `edits`, data[0].id, stats);
     } else {

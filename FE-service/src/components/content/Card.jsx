@@ -3,14 +3,14 @@ import { createPortal } from "react-dom";
 import { Box, Stats, Type, Details, Info, Button, Image } from "../index";
 import { useStats } from "../modal/hooks"
 
-const Card = ({ reFetch, ...item }) => {
+const Card = ({ refetch, ...item }) => {
   const { win, lost, showStats } = useStats(item);
   const [showDetails, setShowDetails] = useState(false);
   const { name, img, height, weight, ability, experience } = item;
 
   const onClose = () => {
     setShowDetails(false);
-    reFetch();
+    refetch();
   }
 
   const modal = createPortal(

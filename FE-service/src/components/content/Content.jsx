@@ -3,7 +3,7 @@ import { PokemonContext } from "../../context/PokemonContext";
 import { Box, Card, Pagination, EmptyContent, Loading } from "../index";
 import { useFetchPokemons } from "./hooks";
 
-const Content = ( reFetch ) => {
+const Content = ( refetch ) => {
   const { queryPokeList } = useContext(PokemonContext);
   const { pokemons, loading, error, currentPage, setCurrentPage } = useFetchPokemons();
 
@@ -22,7 +22,7 @@ const Content = ( reFetch ) => {
     <Box>
       <Box variant="content" size="content">
         {pokemons.map((item) => (
-          <Card reFetch={reFetch} key={item.id} {...item} />
+          <Card key={item.id} refetch={refetch} {...item} />
         ))}
       </Box>
       <Pagination

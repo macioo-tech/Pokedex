@@ -9,6 +9,8 @@ const useFavourites = () => {
 
   const loadPokemons = useCallback(async () => {
       setLoading(true);
+      console.log("refetch favourites");
+      
       try {
         const data = await getItems(LocalApi, `favourites`);
         const names = data.map((item) => item.name);
@@ -31,7 +33,7 @@ const useFavourites = () => {
   return {
     error,
     loading,
-    reFetch: loadPokemons,
+    refetch: loadPokemons,
   };
 };
 

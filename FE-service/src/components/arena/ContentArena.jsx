@@ -2,9 +2,9 @@
 import { Box, Card, Type, Button, Loading } from "../index";
 import { useArenaBattle, useFetchPokemons } from "./hooks"
 
-const ContentArena = ({ reFetch }) => {
+const ContentArena = ({ refetch }) => {
   const { pokemons, loading, error } = useFetchPokemons();
-  const { battleInProgress, startBattle } = useArenaBattle();
+  const { battleInProgress, startBattle } = useArenaBattle(refetch);
   
   if (loading) return <Box size="screen"><Loading /></Box>;
   if (error) return <EmptyContent />
@@ -12,9 +12,9 @@ const ContentArena = ({ reFetch }) => {
   return (
     <Box>
       <Box variant="content" size="content">
-        <Card reFetch={reFetch} {...pokemons[0] || []} />
+        <Card refetch={refetch} {...pokemons[0] || []} />
         {battleInProgress ? (<Loading value="Battle is in progress" />) : (<Type variant="title">Vs.</Type>)}
-        <Card reFetch={reFetch} {...pokemons[1] || []} />
+        <Card refetch={refetch} {...pokemons[1] || []} />
       </Box>
       <Box variant="row">
         <Button

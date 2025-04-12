@@ -9,6 +9,8 @@ const useArena = () => {
 
   const loadPokemons = useCallback(async () => {
     setLoading(true);
+    console.log("refetch arena");
+    
     try {
       const data = await getItems(LocalApi, `arena`);
       const names = data.map((item) => item.name);
@@ -31,7 +33,7 @@ const useArena = () => {
   return {
     error,
     loading,
-    refetchArena: loadPokemons,
+    refetch: loadPokemons,
   };
 };
 

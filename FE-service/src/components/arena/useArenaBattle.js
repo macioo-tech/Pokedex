@@ -9,7 +9,7 @@ import {
 } from "../../services/utils";
 import { LocalApi } from "../../services/api";
 
-const useArenaBattle = () => {
+const useArenaBattle = (onSuccess) => {
   const [battleInProgress, setBattleInProgress] = useState(false);
   const { isLoggedIn } = useContext(LoginContext);
 
@@ -36,6 +36,7 @@ const useArenaBattle = () => {
         updateWin(LocalApi, result.win)
         updateLost(LocalApi, result.lost)
         enqueueSnackbar(`${result.win.name} won this battle!`, { variant: "success" });
+        onSuccess();
       } catch {
         setBattleInProgress(false);
         enqueueSnackbar(`Something went wrong`, { variant: "error" });
