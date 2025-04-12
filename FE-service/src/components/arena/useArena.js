@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { PokemonContext } from "../../context/PokemonContext";
-import { LocalApi } from "../../services/api";
+import { getItems, LocalApi } from "../../services/api";
 
 const useArena = (onSuccess) => {
   const [arenaError, setArenaError] = useState(false);
@@ -11,8 +11,8 @@ const useArena = (onSuccess) => {
     const loadPokemons = async () => {
       setArenaLoading(true);
       try {
-        const response = await LocalApi.get(`/arena`);
-        const names = [...(response?.data || [])].map((item) => item.name);
+        const data = await getItems(LocalApi, `arena`)     
+        const names = data.map((item) => item.name);
         setPokeList(names);  
         onSuccess(names);
         setArenaLoading(false);

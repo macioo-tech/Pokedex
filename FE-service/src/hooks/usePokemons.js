@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState, useCallback } from "react";
 import { PokemonContext } from "../context/PokemonContext";
-import { PokeApi } from "../services/api";
+import { PokeApi, LocalApi, getItems } from "../services/api";
+import { updateList } from "../services/utils";
 
 const usePokemons = () => {
   const { setPokemons, currentPage } = useContext(PokemonContext);
@@ -19,18 +20,19 @@ const usePokemons = () => {
       try {
         const offset = maxPerPage * (currentPage - 1);
         const pages = arrayPokemons.slice(offset, offset + maxPerPage);
-        const promises = pages.map((name) => PokeApi.get(`/pokemon/${name}`));
-
-        const datalist = await Promise.all(promises);
-        const pokelist = [...datalist].map((item) => ({
+        const remotePromises = pages.map((name) => PokeApi.get(`/pokemon/${name}`));
+        const remoteData = await Promise.all(remotePromises);
+        const remoteList = [...remoteData || []].map((item) => ({
           id: item.data.id,
           name: item.data.name,
           height: item.data.height,
           weight: item.data.weight,
-          base: item.data.base_experience,
+          experience: item.data.base_experience,
           ability: item.data.abilities[0].ability.name,
           img: item.data.sprites.other.dream_world.front_default,
         }));
+        const localList = await getItems(LocalApi, `edits`);
+        const pokelist = updateList(remoteList, localList);
         setPokemons(pokelist);
       } catch (error) {
         setGetError(error);

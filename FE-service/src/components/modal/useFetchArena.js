@@ -1,6 +1,6 @@
 import { useCallback, useRef, useContext, useEffect, useState } from "react";
 import { LoginContext } from "../../context/LoginContext";
-import { LocalApi } from "../../services/api";
+import { getItems, LocalApi } from "../../services/api";
 
 const useFetchArena = (item) => {
   const { isLoggedIn } = useContext(LoginContext);
@@ -10,18 +10,18 @@ const useFetchArena = (item) => {
 
   const fetchArena = useCallback(async (item) => {
     try {
-      const pokemonsInArena = await LocalApi.get(`/arena`);
-      if (pokemonsInArena.data?.length == undefined) return;
-      if (pokemonsInArena.data?.length === 0) {
+      const pokemonsInArena = await getItems(LocalApi, `arena`)
+      if (pokemonsInArena.length == undefined) return;
+      if (pokemonsInArena.length === 0) {
         setTotalInArena(0);
         setIsInArena(false);
         return;
       };
-      setTotalInArena(pokemonsInArena.data.length);
-      const response = await LocalApi.get(`/arena/?name=${item.name}`);
-      if (response.data?.length > 0) {
+      setTotalInArena(pokemonsInArena.length);
+      const data = await getItems(LocalApi, `arena/?name=${item.name}`);
+      if (data.length > 0) {
         setIsInArena(true);
-        refArena.current = response.data[0]?.id || 0;
+        refArena.current = data[0]?.id || 0;
       } else {
         setIsInArena(false);
       }

@@ -85,6 +85,11 @@
       "name": "bulbasaur",
       "experience": 80,
       "id": 1
+    },
+    {
+      "name": "kakuna",
+      "experience": 20,
+      "id": 2
     }
   ],
   "pokemons": []

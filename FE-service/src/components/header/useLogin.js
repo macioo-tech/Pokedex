@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { LoginContext } from "../../context/LoginContext";
 import { enqueueSnackbar } from "notistack";
-import { LocalApi } from "../../services/api";
+import { getItems, LocalApi } from "../../services/api";
 import { useNavigate } from "react-router-dom";
 
 const useLogin = () => {
@@ -14,10 +14,8 @@ const useLogin = () => {
       const { email, password } = data;
 
       try {
-        const response = await LocalApi.get(
-          `users?email=${email}&password=${password}`
-        );
-        if (response.data?.length > 0) {
+        const data = await getItems(LocalApi, `users?email=${email}&password=${password}`)
+        if (data.length > 0) {
           enqueueSnackbar(`Welcome ${email}`, { variant: 'success' });
           setIsLoggedIn(true);
           localStorage.setItem("userIsLoggedIn", true);

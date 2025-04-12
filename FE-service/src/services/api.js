@@ -11,8 +11,8 @@ export const LocalApi = axios.create({
 export const getItems = async (api, path) => {
   try {
     const response = await api.get(`/${path}`);
-    if (response?.data?.isArray()) return response.data[0];
-    return response?.data?.results
+    if (Array.isArray(response?.data)) return response.data || [];
+    return response?.data?.results || [];
   } catch (error) {
     return error
   }

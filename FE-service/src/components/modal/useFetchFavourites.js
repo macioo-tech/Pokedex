@@ -1,6 +1,6 @@
 import { useCallback, useRef, useContext, useEffect, useState } from "react";
 import { LoginContext } from "../../context/LoginContext";
-import { LocalApi } from "../../services/api";
+import { getItems, LocalApi } from "../../services/api";
 
 const useFetchFavourites = (item) => {
   const { isLoggedIn } = useContext(LoginContext);
@@ -9,10 +9,10 @@ const useFetchFavourites = (item) => {
 
   const fetchFavourites = useCallback(async (item) => {
     try {
-      const response = await LocalApi.get(`/favourites/?name=${item.name}`);
-      if (response.data?.length > 0) {
+      const data = await getItems(LocalApi, `favourites/?name=${item.name}`);
+      if (data.length > 0) {
         setIsFavourite(true);
-        refFavourite.current = response.data[0]?.id || 0;
+        refFavourite.current = data[0]?.id || 0;
       } else {
         setIsFavourite(false);
       }

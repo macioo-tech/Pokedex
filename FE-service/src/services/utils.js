@@ -65,3 +65,17 @@ export const updateStats = async (api, stats) => {
     return error;
   }
 };
+
+export const updateList = (remoteData, localData) => {
+  const updatedList = remoteData.map((remoteItem) => {
+    const edit = localData.find(localItem => localItem.name === remoteItem.name);
+    if (edit) {
+      // eslint-disable-next-line no-unused-vars
+      const { id, ...restEdit } = edit;
+      return {...remoteItem, ...restEdit};
+    }
+    return remoteItem;
+  })
+  return [...updatedList]
+}
+

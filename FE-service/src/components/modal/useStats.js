@@ -1,12 +1,12 @@
 import { useCallback, useContext, useEffect, useState } from "react";
 import { LoginContext } from "../../context/LoginContext";
-import { LocalApi } from "../../services/api";
+import { getItems, LocalApi } from "../../services/api";
 
 const useStats = (item) => {
   const [showStats, setShowStats] = useState(false);
   const [win, setWin] = useState(0);
   const [lost, setLost] = useState(0);
-  const [experience, setExperience] = useState(item.base || 0);
+  const [experience, setExperience] = useState(item.experience || 0);
   const { isLoggedIn } = useContext(LoginContext);
 
   const fetchStats = useCallback(
@@ -17,11 +17,11 @@ const useStats = (item) => {
         return;
       }
       try {
-        const response = await LocalApi.get(`/stats/?name=${item.name}`);
-        if (response.data?.length > 0) {
-          setWin(response.data[0]?.win);
-          setLost(response.data[0]?.lost);
-          setExperience(response.data[0]?.experience);
+        const data = await getItems(LocalApi, `stats/?name=${item.name}`);
+        if (data?.length > 0) {
+          setWin(data[0]?.win);
+          setLost(data[0]?.lost);
+          setExperience(data[0]?.experience);
           setShowStats(true);
         }
       } catch {

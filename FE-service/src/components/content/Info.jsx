@@ -12,7 +12,7 @@ const CardInfo = ({ height, weight, base, ability }) => {
         </Box>
         <Box className="border-none shadow-none">
           <Type>{base}</Type>
-          <Type variant="bold">Base experience</Type>
+          <Type variant="bold">Experience</Type>
           <Type>{ability}</Type>
           <Type variant="bold">Ability</Type>
         </Box>

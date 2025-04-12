@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { PokeApi } from "../../services/api";
+import { getItems, PokeApi } from "../../services/api";
 import { PokemonContext } from "../../context/PokemonContext";
 
 const useHome = (onSuccess) => {
@@ -11,12 +11,8 @@ const useHome = (onSuccess) => {
     const loadPokemons = async () => {
       setHomeLoading(true);
       try {
-        const response = await PokeApi.get(
-          `/pokemon?limit=${150}&offset=${0}`
-        );
-        console.log(response);
-        
-        const names = [...(response.data?.results || [])].map(
+        const data = await getItems(PokeApi, `pokemon?limit=${150}&offset=${0}`)     
+        const names = data.map(
           (item) => item.name
         );
         setPokeList(names);     
