@@ -18,8 +18,8 @@ const useStats = (item) => {
       try {
         const data = await getItems(LocalApi, `edits/?name=${item.name}`);
         if (data?.length > 0) {
-          setWin(data[0]?.win);
-          setLost(data[0]?.lost);
+          setWin(data[0]?.win || 0);
+          setLost(data[0]?.lost || 0);
           setShowStats(true);
         }
       } catch {
