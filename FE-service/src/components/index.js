@@ -31,8 +31,10 @@ import Button from "./shared/Button";
 import Type from "./shared/Type";
 import Image from "./shared/Image";
 import Box from "./shared/Box";
+import Corner from "./shared/Corner";
 
 import Details from "./modal/Details";
+import Exit from "./modal/Exit";
 
 export {
   Layout,
@@ -63,4 +65,6 @@ export {
   Content,
   ContentArena,
   EmptyContent,
+  Corner,
+  Exit,
 };

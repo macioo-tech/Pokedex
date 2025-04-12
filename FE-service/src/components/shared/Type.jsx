@@ -5,6 +5,7 @@ const typeVariants = cva("bg-transparent text-center font-mono", {
   variants: {
     variant: {
       default: "text-md p-1",
+      small: "text-xs p-1",
       bold: "text-md font-bold p-1",
       title: "text-2xl font-bold p-4",
       focus: "text-7xl p-8",
@@ -17,7 +18,6 @@ const typeVariants = cva("bg-transparent text-center font-mono", {
   },
   defaultVariants: {
     variant: "default",
-    size: "default",
     color: "default",
   },
 });

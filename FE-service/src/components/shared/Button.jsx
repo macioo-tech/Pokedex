@@ -19,6 +19,7 @@ const buttonVariants = cva("flex place-content-center place-items-center", {
       default: "text-black",
       poke: "text-indigo-800",
       red: "text-red-500",
+      white: "text-white"
     },
     bg: {
       default: "bg-transparent",

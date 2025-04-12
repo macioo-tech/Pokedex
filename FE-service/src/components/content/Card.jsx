@@ -3,13 +3,18 @@ import { createPortal } from "react-dom";
 import { Box, Stats, Type, Details, Info, Button, Image } from "../index";
 import { useStats } from "../modal/hooks"
 
-const Card = ({ ...item }) => {
+const Card = ({ reFetch, ...item }) => {
   const { win, lost, showStats } = useStats(item);
   const [showDetails, setShowDetails] = useState(false);
   const { name, img, height, weight, ability, experience } = item;
 
+  const onClose = () => {
+    setShowDetails(false);
+    reFetch();
+  }
+
   const modal = createPortal(
-    <Details {...item} onClose={() => setShowDetails(false)} />,
+    <Details {...item} onClose={onClose} />,
     document.body
   );
 
@@ -22,7 +27,7 @@ const Card = ({ ...item }) => {
 
   return (
     <Box variant="card" border="yes" hover="yes" shadow="yes">
-      {showStats && <Stats win={win} loss={lost} />}
+      {showStats && <Stats win={win} lost={lost} />}
       <Button variant="card" size="card" hover="no" onClick={() => setShowDetails(true)}>
         <Type variant="title">{name}</Type>
         <Image src={img} alt={name} variant="sm" />

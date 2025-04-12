@@ -1,11 +1,11 @@
+import { Corner, Type } from "../index";
 
-const Stats = ({ win, loss }) => {
+const Stats = ({ win, lost }) => {
   return (
-
-    <div className="absolute top-0 left-0 bg-gray-900 p-3 rounded-tl-md rounded-br-lg">
-      <div className="text-sm text-white text-center">W: {win}</div>
-      <div className="text-sm text-white text-center">L: {loss}</div>
-    </div>
+    <Corner>
+        <Type variant="small">W: {win}</Type>
+        <Type variant="small">L: {lost}</Type>
+    </Corner>
   );
 };
 

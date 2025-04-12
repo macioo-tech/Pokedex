@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import { PokemonContext } from "../../context/PokemonContext";
 import { getItems, LocalApi } from "../../services/api";
 
@@ -7,29 +7,31 @@ const useArena = () => {
   const [loading, setLoading] = useState(true);
   const { setPokeList } = useContext(PokemonContext);
 
+  const loadPokemons = useCallback(async () => {
+    setLoading(true);
+    try {
+      const data = await getItems(LocalApi, `arena`);
+      const names = data.map((item) => item.name);
+      setPokeList(names);
+      setLoading(false);
+    } catch (error) {
+      setError(error);
+    } finally {
+      setLoading(false);
+    }
+  }, [setPokeList]);
+
   useEffect(() => {
-    const loadPokemons = async () => {
-      setLoading(true);
-      try {
-        const data = await getItems(LocalApi, `arena`)     
-        const names = data.map((item) => item.name);
-        setPokeList(names);  
-        setLoading(false);
-      } catch (error) {
-        setError(error);
-      } finally {
-        setLoading(false);
-      }
-    };
     loadPokemons();
     return () => {
       setLoading(false);
     };
-  }, [setPokeList]);
+  }, [loadPokemons]);
 
   return {
     error,
     loading,
+    refetchArena: loadPokemons,
   };
 };
 

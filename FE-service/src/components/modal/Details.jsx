@@ -1,4 +1,4 @@
-import { Box, Stats, Type, Info, Button, Image } from "../index";
+import { Box, Stats, Type, Info, Button, Image, Exit } from "../index";
 import {
   HeartIcon as HeartSolid,
   PuzzlePieceIcon as ArenaSolid,
@@ -40,7 +40,8 @@ const Details = ({ onClose, ...item }) => {
         shadow="yes"
         onClick={(e) => e.stopPropagation()}
       >
-        {showStats && <Stats win={win} loss={lost} />}
+        {showStats && <Stats win={win} lost={lost} />}
+        <Exit onClick={onClose}/>
         <Box variant="row">
           <Image src={img} alt={name} />
           <Box>
