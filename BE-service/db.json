@@ -20,63 +20,13 @@
     }
   ],
   "favourites": [],
-  "stats": [
+  "arena": [
     {
-      "win": 3,
-      "lost": 1,
-      "experience": 94,
-      "strength": 6486,
-      "name": "bulbasaur",
+      "name": "charmander",
       "id": 1
-    },
-    {
-      "id": 2,
-      "win": 3,
-      "lost": 15,
-      "experience": 102,
-      "strength": 10200,
-      "name": "kakuna"
     },
     {
       "name": "charizard",
-      "experience": 137,
-      "strength": 114935,
-      "win": 6,
-      "lost": 0,
-      "id": 3
-    },
-    {
-      "name": "charmander",
-      "experience": 62,
-      "strength": 5270,
-      "lost": 6,
-      "win": 0,
-      "id": 4
-    },
-    {
-      "name": "venusaur",
-      "experience": 273,
-      "strength": 263000,
-      "win": 1,
-      "lost": 0,
-      "id": 5
-    },
-    {
-      "name": "blastoise",
-      "experience": 265,
-      "strength": 226575,
-      "win": 0,
-      "lost": 1,
-      "id": 6
-    }
-  ],
-  "arena": [
-    {
-      "name": "venusaur",
-      "id": 1
-    },
-    {
-      "name": "blastoise",
       "id": 2
     }
   ],
@@ -90,6 +40,17 @@
       "name": "kakuna",
       "experience": 20,
       "id": 2
+    },
+    {
+      "name": "charizard",
+      "win": 1,
+      "experience": 277,
+      "id": 3
+    },
+    {
+      "name": "charmander",
+      "lost": 1,
+      "id": 4
     }
   ],
   "pokemons": []

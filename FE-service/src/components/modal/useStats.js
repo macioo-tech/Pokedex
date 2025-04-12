@@ -16,7 +16,7 @@ const useStats = (item) => {
         return;
       }
       try {
-        const data = await getItems(LocalApi, `stats/?name=${item.name}`);
+        const data = await getItems(LocalApi, `edits/?name=${item.name}`);
         if (data?.length > 0) {
           setWin(data[0]?.win);
           setLost(data[0]?.lost);

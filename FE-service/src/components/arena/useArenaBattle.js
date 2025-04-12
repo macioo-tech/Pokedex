@@ -1,21 +1,19 @@
-import { useCallback, useContext, useEffect, useState, useRef } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import { LoginContext } from "../../context/LoginContext";
 import { enqueueSnackbar } from "notistack";
 import {
-  findLooser,
-  findWinner,
   timeout,
-  updateStats,
+  updateWin,
+  updateLost,
+  battle
 } from "../../services/utils";
 import { LocalApi } from "../../services/api";
 
 const useArenaBattle = () => {
   const [battleInProgress, setBattleInProgress] = useState(false);
   const { isLoggedIn } = useContext(LoginContext);
-  const refWinStats = useRef({});
-  const refLostStats = useRef({});
 
-  const battle = useCallback(
+  const arenaBattle = useCallback(
     async (pokemons) => {
       const disableBattle = !isLoggedIn || pokemons?.length < 2;
       if (disableBattle) {
@@ -29,33 +27,15 @@ const useArenaBattle = () => {
       }
       try {
         setBattleInProgress(true);
-        refWinStats.current = await findWinner(
-          LocalApi,
-          pokemons,
-          refWinStats.current
-        );
-        refLostStats.current = await findLooser(
-          LocalApi,
-          pokemons,
-          refLostStats.current
-        );
         await timeout(2000);
-        if (refWinStats.current.strength > refLostStats.current.strength) {
-          refWinStats.current.experience += 10;
-          refWinStats.current.win += 1;
-          refLostStats.current.lost += 1;
-          enqueueSnackbar(
-            `The winner is ${refWinStats.current.name}! New experience: ${refWinStats.current.experience}`,
-            { variant: "success" }
-          );
-          await updateStats(LocalApi, refWinStats.current);
-          await updateStats(LocalApi, refLostStats.current);
-          enqueueSnackbar(`Updated stats successfully`, { variant: "success" });
-        } else {
-          enqueueSnackbar(`Draaaaaw! Pokemons are equal!`, {
-            variant: "success",
-          });
+        const result  = battle(pokemons);  
+        if (result.win.name === result.lost.name || result == undefined ) {
+          enqueueSnackbar(`Nobody wins... nobody looses...`, { variant: "success" });
+          return;
         }
+        updateWin(LocalApi, result.win)
+        updateLost(LocalApi, result.lost)
+        enqueueSnackbar(`${result.win.name} won this battle!`, { variant: "success" });
       } catch {
         setBattleInProgress(false);
         enqueueSnackbar(`Something went wrong`, { variant: "error" });
@@ -69,9 +49,9 @@ const useArenaBattle = () => {
   useEffect(() => {
     battle();
     return setBattleInProgress(false);
-  }, [battle]);
+  }, [arenaBattle]);
 
-  return { battleInProgress, startBattle: battle };
+  return { battleInProgress, startBattle: arenaBattle };
 };
 
 export default useArenaBattle;

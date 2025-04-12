@@ -1,65 +1,66 @@
-import { postItem, putItem } from "./api";
+import { getItems, postItem, putItem } from "./api";
 
 export const timeout = (ms) => {
   return new Promise((resolve) => setTimeout(resolve, ms));
 };
 
-export const findWinner = async (api, array, winStats) => {
+export const battle = (array) => {
+  if (!array || array.length === 0) return { win: null, lost: null };
+  let win,
+    lost = {};
   let max = 0;
-  for (let i = 0; i < array.length; i++) {
-    const response = await api.get(`/stats/?name=${array[i].name}`);
-    if (response.data?.length > 0) {
-      if (response.data[0]?.experience * array[i].weight > max) {
-        winStats = response?.data[0];
-        max = response.data[0]?.experience * array[i].weight;
-      }
-    } else {
-      if (array[i].base * array[i].weight > max) {
-        winStats = {
-          name: array[i].name,
-          experience: array[i].base,
-          strength: array[i].base * array[i].weight, 
-          win: 0,
-          lost: 0,
-        };
-        max = array[i].base * array[i].weight;
-      }
-    }
-  }
-  return winStats;
-};
-
-export const findLooser = async (api, array, lostStats) => {
   let min = Infinity;
   for (let i = 0; i < array.length; i++) {
-    const response = await api.get(`/stats/?name=${array[i].name}`);
-    if (response.data?.length > 0) {
-      if (response.data[0]?.experience * array[i].weight < min) {
-        lostStats = response?.data[0];
-        min = response.data[0]?.experience;
-      }
-    } else {
-      if (array[i].base * array[i].weight < min) {
-        lostStats = {
-          name: array[i].name,
-          experience: array[i].base,
-          strength: array[i].base * array[i].weight, 
-          win: 0,
-          lost: 0,
-        };
-        min = array[i].base * array[i].weight;
-      }
+    let val = array[i].experience * array[i].weight;
+    if (val > max) {
+      win = array[i];
+      max = val;
+    }
+    if (val < min) {
+      lost = array[i];
+      min = val;
     }
   }
-  return lostStats;
+  console.log(win);
+  console.log(lost);
+  return { win, lost };
 };
 
-export const updateStats = async (api, stats) => {
+export const updateWin = async (api, pokemon) => {
+  const { name, win, experience } = pokemon;
+  const stats = {
+    name: name,
+    win: win ? win + 1 : 1,
+    experience: experience ? experience + 10 : 10,
+  };
+  console.log(stats);
+  
+
   try {
-    if (stats.id > 0) {
-      await putItem(api, 'stats', stats.id, stats)
+    const data = await getItems(api, `edits/${name}`);
+    if (data.length > 0) {
+      await putItem(api, `edits`, data[0].id, stats);
     } else {
-      await postItem(api, 'stats', stats)
+      await postItem(api, `edits`, stats);
+    }
+  } catch (error) {
+    return error;
+  }
+};
+
+export const updateLost = async (api, pokemon) => {
+  const { name, lost } = pokemon;
+  const stats = {
+    name: name,
+    lost: lost ? lost + 1 : 1,
+  };
+
+  try {
+    const data = await getItems(api, `edits/${name}`);
+    if (data.length > 0) {
+      await putItem(api, `edits`, data[0].id, stats);
+    } else {
+      await postItem(api, `edits`, stats);
     }
   } catch (error) {
     return error;
@@ -68,14 +69,15 @@ export const updateStats = async (api, stats) => {
 
 export const updateList = (remoteData, localData) => {
   const updatedList = remoteData.map((remoteItem) => {
-    const edit = localData.find(localItem => localItem.name === remoteItem.name);
+    const edit = localData.find(
+      (localItem) => localItem.name === remoteItem.name
+    );
     if (edit) {
       // eslint-disable-next-line no-unused-vars
       const { id, ...restEdit } = edit;
-      return {...remoteItem, ...restEdit};
+      return { ...remoteItem, ...restEdit };
     }
     return remoteItem;
-  })
-  return [...updatedList]
-}
-
+  });
+  return [...updatedList];
+};
