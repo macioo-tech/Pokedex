@@ -44,7 +44,7 @@ const useArenaBattle = (onSuccess) => {
         setBattleInProgress(false);
       }
     },
-    [isLoggedIn]
+    [isLoggedIn, onSuccess]
   );
 
   useEffect(() => {

@@ -52,13 +52,13 @@
     },
     {
       "name": "wartortle",
-      "win": 3,
-      "experience": 172,
+      "win": 4,
+      "experience": 182,
       "id": 3
     },
     {
       "name": "charmeleon",
-      "lost": 3,
+      "lost": 4,
       "id": 4
     }
   ],
