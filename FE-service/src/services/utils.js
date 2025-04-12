@@ -27,10 +27,11 @@ export const battle = (array) => {
 };
 
 export const updateWin = async (api, pokemon) => {
-  const { name, win, experience } = pokemon;
+  const { name, win, lost, experience } = pokemon;
   const stats = {
     name: name,
     win: win ? win + 1 : 1,
+    lost: lost ? lost : 0,
     experience: experience ? experience + 10 : 10,
   };
   console.log(stats);
@@ -49,10 +50,12 @@ export const updateWin = async (api, pokemon) => {
 };
 
 export const updateLost = async (api, pokemon) => {
-  const { name, lost } = pokemon;
+  const { name, win, lost, experience } = pokemon;
   const stats = {
     name: name,
+    win: win ? win : 0,
     lost: lost ? lost + 1 : 1,
+    experience: experience ? experience : 0,
   };
 
   try {

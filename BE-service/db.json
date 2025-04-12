@@ -32,17 +32,17 @@
   "arena": [
     {
       "name": "wartortle",
-      "id": 1
+      "id": 3
     },
     {
-      "name": "charmeleon",
-      "id": 2
+      "name": "venusaur",
+      "id": 4
     }
   ],
   "edits": [
     {
       "name": "bulbasaur",
-      "experience": 80,
+      "lost": 1,
       "id": 1
     },
     {
@@ -52,14 +52,22 @@
     },
     {
       "name": "wartortle",
-      "win": 4,
-      "experience": 182,
+      "win": 1,
+      "lost": 2,
+      "experience": 152,
       "id": 3
     },
     {
       "name": "charmeleon",
       "lost": 4,
       "id": 4
+    },
+    {
+      "name": "venusaur",
+      "win": 3,
+      "lost": 0,
+      "experience": 293,
+      "id": 5
     }
   ],
   "pokemons": []
