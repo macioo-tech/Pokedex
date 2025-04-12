@@ -6,7 +6,6 @@ const useStats = (item) => {
   const [showStats, setShowStats] = useState(false);
   const [win, setWin] = useState(0);
   const [lost, setLost] = useState(0);
-  const [experience, setExperience] = useState(item.experience || 0);
   const { isLoggedIn } = useContext(LoginContext);
 
   const fetchStats = useCallback(
@@ -21,7 +20,6 @@ const useStats = (item) => {
         if (data?.length > 0) {
           setWin(data[0]?.win);
           setLost(data[0]?.lost);
-          setExperience(data[0]?.experience);
           setShowStats(true);
         }
       } catch {
@@ -40,7 +38,6 @@ const useStats = (item) => {
   return {
     win,
     lost,
-    experience,
     showStats,
     refetchStats: fetchStats,
   };

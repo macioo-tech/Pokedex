@@ -18,7 +18,7 @@ import {
 } from "./hooks.js";
 
 const Details = ({ onClose, ...item }) => {
-  const { win, lost, experience, showStats } = useStats(item);
+  const { win, lost, showStats } = useStats(item);
   const { refFavourite, isFavourite, refetchFavourites } =
     useFetchFavourites(item);
   const { toggleFavourite } = useAddToFavourites(
@@ -29,7 +29,7 @@ const Details = ({ onClose, ...item }) => {
     useFetchArena(item);
   const { toggleArena } = useAddToArena(refetchArena, refArena, isTotalInArena);
   const { isLoggedIn } = useContext(LoginContext);
-  const { name, img, height, weight, ability } = item;
+  const { name, img, height, weight, ability, experience } = item;
   
   return (
     <Box variant="modal" size="screen" onClick={onClose}>

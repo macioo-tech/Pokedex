@@ -4,9 +4,9 @@ import { Box, Stats, Type, Details, Info, Button, Image } from "../index";
 import { useStats } from "../modal/hooks"
 
 const Card = ({ ...item }) => {
-  const { win, lost, experience, showStats } = useStats(item);
+  const { win, lost, showStats } = useStats(item);
   const [showDetails, setShowDetails] = useState(false);
-  const { name, img, height, weight, ability } = item;
+  const { name, img, height, weight, ability, experience } = item;
 
   const modal = createPortal(
     <Details {...item} onClose={() => setShowDetails(false)} />,
