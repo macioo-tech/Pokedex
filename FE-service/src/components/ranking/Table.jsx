@@ -9,7 +9,7 @@ import TableCell from "../shared/Table/TableCell";
 
 export const ContentRanking = () => {
   const { queryPokeList } = useContext(PokemonContext);
-  const { pokemons, loading, error, currentPage, setCurrentPage } = useFetchPokemons();
+  const { pokemons, loading, error, currentPage, setCurrentPage } = useFetchPokemons("all");
   const [sort, setSort] = useState("");
   const sortedPokemons = useRef([]);
 
@@ -83,8 +83,11 @@ export const ContentRanking = () => {
           <TableHead>
             <TableCell onClick={() => handleSort("name")}>Name</TableCell>
             <TableCell onClick={() => handleSort("experience")}>Experience</TableCell>
+            <TableCell onClick={() => handleSort("weight")}>Weight</TableCell>
+            <TableCell onClick={() => handleSort("height")}>Height</TableCell>
             <TableCell onClick={() => handleSort("wins")}>Wins</TableCell>
             <TableCell onClick={() => handleSort("losts")}>Losts</TableCell>
+            <TableCell onClick={() => handleSort("ability")}>Ability</TableCell>
           </TableHead>
 
           <TableRow pokemons={sortedPokemons.current.length ? sortedPokemons.current : pokemons} />
@@ -120,21 +123,26 @@ export const TableRow = ({ pokemons }) => {
           <td className="p-4 border-b border-blue-gray-50">
             <div className="flex items-center gap-3">
               <img src={item.img} alt={item.name} className="relative inline-block h-9 w-9 !rounded-full object-cover object-center" />
-              <div className="flex flex-col">
-                <p className="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">{item.name}</p>
-              </div>
+              <p className="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">{item.name}</p>
             </div>
           </td>
           <td className="p-4 border-b border-blue-gray-50">
-            <div className="flex flex-col">
-              <p className="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">{item.experience || 0}</p>
-            </div>
+            <p className="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">{item.experience}</p>
           </td>
           <td className="p-4 border-b border-blue-gray-50">
-            <p className="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">{item.win || 0}</p>
+            <p className="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">{item.weight}</p>
           </td>
           <td className="p-4 border-b border-blue-gray-50">
-            <p className="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">{item.lost || 0}</p>
+            <p className="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">{item.height}</p>
+          </td>
+          <td className="p-4 border-b border-blue-gray-50">
+            <p className="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">{item.win}</p>
+          </td>
+          <td className="p-4 border-b border-blue-gray-50">
+            <p className="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">{item.lost}</p>
+          </td>
+          <td className="p-4 border-b border-blue-gray-50">
+            <p className="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">{item.ability}</p>
           </td>
         </tr>
       ))}
