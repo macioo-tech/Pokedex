@@ -3,8 +3,8 @@ import Layout from "./layout/Layout";
 import Content from "./content/Content";
 import Card from "./content/Card";
 import Info from "./content/Info";
-import Stats from "./content/Stats"
-import Pagination from "./content/Pagination"
+import Stats from "./content/Stats";
+import Pagination from "./content/Pagination";
 import Loading from "./content/Loading";
 import EmptyContent from "./content/EmptyContent";
 
@@ -17,7 +17,7 @@ import Login from "./header/Login";
 import Logout from "./header/Logout";
 import SignUp from "./header/SignUp";
 import Menu from "./header/Menu";
-import SubMenu from "./header/SubMenu"
+import SubMenu from "./header/SubMenu";
 import SubMenuItem from "./header/SubMenuItem";
 
 import Home from "./home/Home";
@@ -31,6 +31,7 @@ import Type from "./shared/Type";
 import Image from "./shared/Image";
 import Box from "./shared/Box";
 import Corner from "./shared/Corner";
+import Container from "./shared/Container";
 
 import Details from "./modal/Details";
 import Exit from "./modal/Exit";
@@ -69,5 +70,5 @@ export {
   EmptyContent,
   Corner,
   Exit,
-
+  Container,
 };

@@ -5,12 +5,7 @@ import { LocalApi } from "../../services/api";
 const Arena = () => {
   const { error, loading, refetch } = usePokemons(LocalApi, "arena");
 
-  if (loading)
-    return (
-      <Box size="screen">
-        <Loading />
-      </Box>
-    );
+  if (loading) return <Loading />;
   if (error) return <EmptyContent />;
 
   return <ContentArena refetch={refetch} />;

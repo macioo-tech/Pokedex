@@ -9,14 +9,21 @@ const divVariants = cva("", {
       header: "relative mx-4 mt-4 overflow-hidden rounded-none bg-clip-border",
       table: "p-6 px-0 overflow-scroll",
       pagination: "flex items-center justify-between p-4 border-t border-blue-gray-50",
+      "flex-between": "flex items-center justify-between gap-8 mb-8",
+      "flex-reverse": "flex flex-row-reverse items-center",
     },
     theme: {
       light: "text-gray-700 bg-white",
+    },
+    position: {
+      inhirit: "",
+      center: "place-content-center place-items-center",
     },
   },
   defaultVariants: {
     variant: "default",
     theme: "light",
+    position: "inhirit",
   },
 });
 

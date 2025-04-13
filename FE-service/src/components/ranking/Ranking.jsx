@@ -6,12 +6,7 @@ import { ContentRanking } from "./Table";
 const Ranking = () => {
   const { error, loading } = usePokemons(PokeApi, `pokemon?limit=${150}&offset=${0}`);
 
-  if (loading)
-    return (
-      <Box size="screen">
-        <Loading />
-      </Box>
-    );
+  if (loading) return <Loading />;
   if (error) return <EmptyContent />;
 
   return <ContentRanking />;

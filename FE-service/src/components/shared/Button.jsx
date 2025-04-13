@@ -1,7 +1,7 @@
 import { cva } from "class-variance-authority";
 import { cn } from "clsx-for-tailwind";
 
-const buttonVariants = cva("flex place-content-center place-items-center", {
+const buttonVariants = cva("flex place-items-center", {
   variants: {
     variant: {
       default: "flex-row",

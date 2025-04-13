@@ -5,12 +5,7 @@ import { LocalApi } from "../../services/api";
 const Favourites = () => {
   const { loading, error, refetch } = usePokemons(LocalApi, "favourites");
 
-  if (loading)
-    return (
-      <Box size="screen">
-        <Loading />
-      </Box>
-    );
+  if (loading) return <Loading />;
   if (error) return <EmptyContent />;
 
   return <Content refetch={refetch} />;

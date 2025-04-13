@@ -1,14 +1,17 @@
 import { PokemonProvider } from "../../context/PokemonContext";
 import { Header } from "../index";
+import Container from "../shared/Container";
 
 const Layout = ({ children }) => {
   return (
-    <div className="relative flex flex-col w-full h-full text-gray-700 bg-white shadow-md rounded-xl bg-clip-border">
-      <PokemonProvider>
-        <Header />
-        <div>{children}</div>
-      </PokemonProvider>
-    </div>
+    <Container className="p-16">
+      <Container variant="body">
+        <PokemonProvider>
+          <Header />
+          <div>{children}</div>
+        </PokemonProvider>
+      </Container>
+    </Container>
   );
 };
 
