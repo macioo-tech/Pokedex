@@ -21,8 +21,6 @@ export const battle = (array) => {
       min = val;
     }
   }
-  console.log(win);
-  console.log(lost);
   return { win, lost };
 };
 
@@ -34,8 +32,6 @@ export const updateWin = async (api, pokemon) => {
     lost: lost ? lost : 0,
     experience: experience ? experience + 10 : 10,
   };
-  console.log(stats);
-  
 
   try {
     const data = await getItems(api, `edits/?name=${name}`);
@@ -72,9 +68,7 @@ export const updateLost = async (api, pokemon) => {
 
 export const updateList = (remoteData, localData) => {
   const updatedList = remoteData.map((remoteItem) => {
-    const edit = localData.find(
-      (localItem) => localItem.name === remoteItem.name
-    );
+    const edit = localData.find((localItem) => localItem.name === remoteItem.name);
     if (edit) {
       // eslint-disable-next-line no-unused-vars
       const { id, ...restEdit } = edit;

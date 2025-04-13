@@ -1,8 +1,8 @@
+import useLogin from "../../hooks/useLogin";
 import { useForm, FormProvider } from "react-hook-form";
 import { Input, Button, Box, Type } from "../index";
 import { AtSymbolIcon, LockClosedIcon } from "@heroicons/react/16/solid";
 import { NavLink } from "react-router-dom";
-import { useLogin } from "./hooks"
 
 const Login = () => {
   const { onSubmit } = useLogin();

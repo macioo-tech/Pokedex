@@ -1,6 +1,6 @@
 import { useCallback, useRef, useContext, useEffect, useState } from "react";
-import { LoginContext } from "../../context/LoginContext";
-import { getItems, LocalApi } from "../../services/api";
+import { LoginContext } from "../context/LoginContext";
+import { getItems, LocalApi } from "../services/api";
 
 const useFetchArena = (item) => {
   const { isLoggedIn } = useContext(LoginContext);

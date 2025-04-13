@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { PokemonContext } from "../../context/PokemonContext";
+import { PokemonContext } from "../context/PokemonContext";
 
 const useHeader = () => {
   const [error, setError] = useState(false);

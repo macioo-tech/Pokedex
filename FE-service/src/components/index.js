@@ -24,7 +24,6 @@ import Home from "./home/Home";
 
 import Favourites from "./favourites/Favourites";
 import Edit from "./edit/Edit";
-import Ranking from "./ranking/Ranking";
 
 import Input from "./shared/Input";
 import Button from "./shared/Button";
@@ -35,6 +34,9 @@ import Corner from "./shared/Corner";
 
 import Details from "./modal/Details";
 import Exit from "./modal/Exit";
+
+import Ranking from "./ranking/Ranking";
+//import Table from "./ranking/Table";
 
 export {
   Layout,
@@ -67,4 +69,5 @@ export {
   EmptyContent,
   Corner,
   Exit,
+
 };

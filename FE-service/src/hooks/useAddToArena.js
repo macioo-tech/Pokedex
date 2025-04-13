@@ -1,7 +1,7 @@
 import { useContext } from "react";
-import { LoginContext } from "../../context/LoginContext";
+import { LoginContext } from "../context/LoginContext";
 import { enqueueSnackbar } from "notistack";
-import { LocalApi } from "../../services/api";
+import { LocalApi } from "../services/api";
 
 const useAddToArena = (onSuccess, refArena, isTotalInArena) => {
   const { isLoggedIn } = useContext(LoginContext);

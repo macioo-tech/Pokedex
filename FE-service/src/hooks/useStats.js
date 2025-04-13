@@ -1,6 +1,6 @@
 import { useCallback, useContext, useEffect, useState } from "react";
-import { LoginContext } from "../../context/LoginContext";
-import { getItems, LocalApi } from "../../services/api";
+import { LoginContext } from "../context/LoginContext";
+import { getItems, LocalApi } from "../services/api";
 
 const useStats = (item) => {
   const [showStats, setShowStats] = useState(false);

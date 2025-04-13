@@ -1,13 +1,13 @@
 import { useCallback, useContext, useEffect, useState } from "react";
-import { LoginContext } from "../../context/LoginContext";
+import { LoginContext } from "../context/LoginContext";
 import { enqueueSnackbar } from "notistack";
 import {
   timeout,
   updateWin,
   updateLost,
   battle
-} from "../../services/utils";
-import { LocalApi } from "../../services/api";
+} from "../services/utils";
+import { LocalApi } from "../services/api";
 
 const useArenaBattle = (onSuccess) => {
   const [battleInProgress, setBattleInProgress] = useState(false);

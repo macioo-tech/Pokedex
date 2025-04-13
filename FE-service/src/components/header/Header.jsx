@@ -1,8 +1,9 @@
+import useHeader from "../../hooks/useHeader";
 import { NavLink } from "react-router-dom";
 import { Menus } from "../../services/menus";
 import { MagnifyingGlassIcon } from "@heroicons/react/16/solid";
 import { Search, Menu, Box, Button } from "../index"
-import { useHeader } from "./hooks"
+import AlternativeSearch from "../shared/AlternativeSearch";
 
 const Header = () => {
   const { setQuery } = useHeader();

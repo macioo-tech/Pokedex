@@ -1,4 +1,4 @@
-import { Corner, Type, Box } from "../index";
+import { Corner } from "../index";
 import { XMarkIcon } from "@heroicons/react/16/solid";
 
 const Exit = ({ ...props }) => {

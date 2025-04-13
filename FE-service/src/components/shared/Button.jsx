@@ -19,15 +19,14 @@ const buttonVariants = cva("flex place-content-center place-items-center", {
       default: "text-black",
       poke: "text-indigo-800",
       red: "text-red-500",
-      white: "text-white"
+      white: "text-white",
     },
     bg: {
       default: "bg-transparent",
       yes: "bg-indigo-500",
     },
     hover: {
-      default:
-        "hover:text-indigo-500 transition delay-150 duration-150 hover:scale-110",
+      default: "hover:text-indigo-500 transition delay-150 duration-150 hover:scale-110",
       no: "",
     },
     border: {
@@ -50,21 +49,8 @@ const buttonVariants = cva("flex place-content-center place-items-center", {
   },
 });
 
-const Button = ({
-  className,
-  children,
-  variant,
-  size,
-  fc,
-  bg,
-  hover,
-  border,
-  shadow,
-  ...props
-}) => {
-  const buttonClasses = cn(
-    buttonVariants({ variant, size, fc, bg, hover, border, shadow, className })
-  );
+const Button = ({ className, children, variant, size, fc, bg, hover, border, shadow, ...props }) => {
+  const buttonClasses = cn(buttonVariants({ variant, size, fc, bg, hover, border, shadow, className }));
 
   return (
     <button type="button" {...props} className={buttonClasses}>

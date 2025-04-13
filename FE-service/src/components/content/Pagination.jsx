@@ -1,5 +1,3 @@
-import { ForwardIcon, BackwardIcon } from "@heroicons/react/16/solid";
-import { Type, Button, Box } from "../index";
 
 const Pagination = ({ totalPages, currentPage, setCurrentPage }) => {
   if (totalPages == 1) return <></>;
@@ -8,50 +6,30 @@ const Pagination = ({ totalPages, currentPage, setCurrentPage }) => {
   const disableNext = currentPage >= totalPages;
 
   return (
-    <div className="grid grid-cols-9">
-      <div></div>
-      <div></div>
-      <div></div>
-      <Box>
+    <div class="flex items-center justify-between p-4 border-t border-blue-gray-50">
+      <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+        Page {currentPage} of {totalPages}
+      </p>
+      <div class="flex gap-2">
         {!disablePrev && (
-          <Box variant="row" className="justify-end">
-            <Button size="xl" onClick={() => setCurrentPage(1)}>
-              <BackwardIcon className="size-8" />
-              <BackwardIcon className="size-8" />
-            </Button>
-            <Button
-              size="xl"
-              onClick={() => setCurrentPage((prev) => prev - 1)}
-            >
-              <BackwardIcon className="size-8" />
-            </Button>
-          </Box>
+          <button
+            onClick={() => setCurrentPage((prev) => prev - 1)}
+            class="select-none rounded-lg border border-gray-900 py-2 px-4 text-center align-middle font-sans text-xs font-bold uppercase text-gray-900 transition-all hover:opacity-75 focus:ring focus:ring-gray-300 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+            type="button"
+          >
+            Previous
+          </button>
         )}
-      </Box>
-      <Box>
-        <Type>
-          Page {currentPage} of {totalPages}
-        </Type>
-      </Box>
-      <Box>
         {!disableNext && (
-          <Box variant="row" className="justify-start">
-            <Button
-              size="xl"
-              onClick={() => setCurrentPage((prev) => prev + 1)}
-            >
-              <ForwardIcon strokeWidth={2} className="size-8" />
-            </Button>
-            <Button size="xl" onClick={() => setCurrentPage(totalPages)}>
-              <ForwardIcon strokeWidth={2} className="size-8" />
-              <ForwardIcon strokeWidth={2} className="size-8" />
-            </Button>
-          </Box>
+          <button
+            onClick={() => setCurrentPage((prev) => prev + 1)}
+            class="select-none rounded-lg border border-gray-900 py-2 px-4 text-center align-middle font-sans text-xs font-bold uppercase text-gray-900 transition-all hover:opacity-75 focus:ring focus:ring-gray-300 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+            type="button"
+          >
+            Next
+          </button>
         )}
-      </Box>
-      <div></div>
-      <div></div>
-      <div></div>
+      </div>
     </div>
   );
 };

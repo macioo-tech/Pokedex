@@ -1,7 +1,7 @@
+import useStats from "../../hooks/useStats";
 import { useState } from "react";
 import { createPortal } from "react-dom";
 import { Box, Stats, Type, Details, Info, Button, Image } from "../index";
-import { useStats } from "../modal/hooks"
 
 const Card = ({ refetch, ...item }) => {
   const { win, lost, showStats } = useStats(item);

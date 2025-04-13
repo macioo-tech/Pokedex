@@ -1,4 +1,4 @@
-import {useLogin} from "./hooks"
+import useLogin from "../../hooks/useLogin";
 import { useEffect } from "react";
 
 const Logout = () => {

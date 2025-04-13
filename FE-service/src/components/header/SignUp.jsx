@@ -1,3 +1,4 @@
+import useSignUp from "../../hooks/useSignUp";
 import { useForm, FormProvider } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Input, Button, Box, Type } from "../index";
@@ -8,7 +9,6 @@ import {
   AtSymbolIcon,
   LockClosedIcon,
 } from "@heroicons/react/16/solid";
-import { useSignUp } from "./hooks"
 
 const SignUp = () => {
   const { onSubmit } = useSignUp();
