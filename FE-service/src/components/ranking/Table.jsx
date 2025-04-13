@@ -78,22 +78,20 @@ export const ContentRanking = () => {
 
   return (
     <>
-      <div className="relative flex flex-col w-full h-full text-gray-700 bg-white shadow-md rounded-xl bg-clip-border">
-        <Table>
-          <TableHead>
-            <TableCell onClick={() => handleSort("name")}>Name</TableCell>
-            <TableCell onClick={() => handleSort("experience")}>Experience</TableCell>
-            <TableCell onClick={() => handleSort("weight")}>Weight</TableCell>
-            <TableCell onClick={() => handleSort("height")}>Height</TableCell>
-            <TableCell onClick={() => handleSort("wins")}>Wins</TableCell>
-            <TableCell onClick={() => handleSort("losts")}>Losts</TableCell>
-            <TableCell onClick={() => handleSort("ability")}>Ability</TableCell>
-          </TableHead>
+      <Table>
+        <TableHead>
+          <TableCell onClick={() => handleSort("name")}>Name</TableCell>
+          <TableCell onClick={() => handleSort("experience")}>Experience</TableCell>
+          <TableCell onClick={() => handleSort("weight")}>Weight</TableCell>
+          <TableCell onClick={() => handleSort("height")}>Height</TableCell>
+          <TableCell onClick={() => handleSort("wins")}>Wins</TableCell>
+          <TableCell onClick={() => handleSort("losts")}>Losts</TableCell>
+          <TableCell onClick={() => handleSort("ability")}>Ability</TableCell>
+        </TableHead>
 
-          <TableRow pokemons={sortedPokemons.current.length ? sortedPokemons.current : pokemons} />
-        </Table>
-        <Pagination totalPages={Math.ceil(queryPokeList.length / 15)} currentPage={currentPage} setCurrentPage={setCurrentPage} />
-      </div>
+        <TableRow pokemons={sortedPokemons.current.length ? sortedPokemons.current : pokemons} />
+      </Table>
+      <Pagination totalPages={Math.ceil(queryPokeList.length / 15)} currentPage={currentPage} setCurrentPage={setCurrentPage} />
     </>
   );
 };

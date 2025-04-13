@@ -2,7 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   font-family: "Space Grotesk", sans-serif;
@@ -10,20 +11,14 @@ html, body {
   color: black;
   display: flex;
   justify-content: center;
-  justify-items: center;
-}
-
-@layer components {
-  .sub-menu {
-    @apply absolute top-[5rem] p-[15px] rounded-[6px] origin-[50%_-170px] bg-white;
-  }
 }
 
 /* backdrop-blur */
 
 @layer utilities {
   @keyframes blink {
-    0%, 100% {
+    0%,
+    100% {
       opacity: 1;
     }
     50% {
