@@ -4,11 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Input, Button, Box, Type } from "../index";
 import { schemaUsers } from "../../services/schemas";
 import { NavLink } from "react-router-dom";
-import {
-  UserPlusIcon,
-  AtSymbolIcon,
-  LockClosedIcon,
-} from "@heroicons/react/16/solid";
+import { UserPlusIcon, AtSymbolIcon, LockClosedIcon } from "@heroicons/react/16/solid";
 
 const SignUp = () => {
   const { onSubmit } = useSignUp();
@@ -30,44 +26,17 @@ const SignUp = () => {
       <Type variant="title">Sign up your account</Type>
       <FormProvider {...methods}>
         <form onSubmit={handleSubmit(onSubmit)}>
-        <Box size="content">
-          <Input
-            name="name"
-            label="Name or nickname"
-            icon={
-              <UserPlusIcon className="size-10"/>
-            }
-          />
-          <Input
-            name="email"
-            label="example@example.com"
-            icon={
-              <AtSymbolIcon className="size-10"/>
-            }
-          />
-          <Input
-            name="password"
-            type="password"
-            label="Password"
-            icon={
-              <LockClosedIcon className="size-10"/>
-            }
-          />
-          <Input
-            name="confirm"
-            type="password"
-            label="Confirm password"
-            icon={
-              <LockClosedIcon
-                className="size-10"/>
-            }
-          />
-          <Box variant="row">
-            <Button type="submit">Sign up</Button>
-            <Button>
-              <NavLink to="/login">Log in</NavLink>
-            </Button>
-          </Box>
+          <Box size="content">
+            <Input name="name" label="Name or nickname" icon={<UserPlusIcon className="size-10" />} />
+            <Input name="email" label="example@example.com" icon={<AtSymbolIcon className="size-10" />} />
+            <Input name="password" type="password" label="Password" icon={<LockClosedIcon className="size-10" />} />
+            <Input name="confirm" type="password" label="Confirm password" icon={<LockClosedIcon className="size-10" />} />
+            <Box variant="row">
+              <Button type="submit">Sign up</Button>
+              <Button>
+                <NavLink to="/login">Log in</NavLink>
+              </Button>
+            </Box>
           </Box>
         </form>
       </FormProvider>

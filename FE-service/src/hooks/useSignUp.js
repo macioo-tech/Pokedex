@@ -19,11 +19,11 @@ const useSignUp = () => {
             "Content-Type": "application/json",
           },
         });
-        enqueueSnackbar(`Welcome ${data.name} in the Pokedex`, { variant: 'success' });
+        enqueueSnackbar(`Welcome ${data.name} in the Pokedex`, { variant: "success" });
         setIsLoggedIn(true);
         navigate("/");
       } catch {
-        enqueueSnackbar(`Wrong user or password`, { variant: 'error' });
+        enqueueSnackbar(`Wrong user or password`, { variant: "error" });
         setIsLoggedIn(false);
       }
     } else {

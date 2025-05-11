@@ -3,18 +3,10 @@ import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { SnackbarProvider } from "notistack";
 import { LoginProvider } from "./context/LoginContext.jsx";
-import {
-  Home,
-  Login,
-  Logout,
-  SignUp,
-  Favourites,
-  Arena,
-  Ranking,
-  Edit,
-} from "./components/index.js";
+import { Home, Login, Logout, SignUp, Favourites, Arena, Ranking, Edit } from "./components/index.js";
 import "./index.css";
 import App from "./App.jsx";
+import Create from "./components/edit/Create.jsx";
 
 const router = createBrowserRouter([
   {
@@ -29,6 +21,7 @@ const router = createBrowserRouter([
       { element: <Arena />, path: "/arena" },
       { element: <Ranking />, path: "/ranking" },
       { element: <Edit />, path: "/edit" },
+      { element: <Create />, path: "/edit/create" },
     ],
   },
 ]);
