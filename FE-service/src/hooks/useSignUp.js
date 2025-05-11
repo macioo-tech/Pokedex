@@ -4,7 +4,7 @@ import { enqueueSnackbar } from "notistack";
 import { LocalApi } from "../services/api";
 import { useNavigate } from "react-router-dom";
 
-const useSignUp = () => {
+const useSignUp = (users) => {
   const { isLoggedIn, setIsLoggedIn } = useContext(LoginContext);
   const navigate = useNavigate();
 
@@ -12,6 +12,11 @@ const useSignUp = () => {
     if (!isLoggedIn) {
       event.preventDefault();
       delete data.confirm;
+
+      if (users.find((user) => user.name === data.name)) {
+        enqueueSnackbar(`User ${data.name} exists. Try another name.`, { variant: "error" });
+        return;
+      }
 
       try {
         await LocalApi.post(`/users`, data, {

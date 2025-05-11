@@ -5,9 +5,12 @@ import { Input, Button, Box, Type } from "../index";
 import { schemaUsers } from "../../services/schemas";
 import { NavLink } from "react-router-dom";
 import { UserPlusIcon, AtSymbolIcon, LockClosedIcon } from "@heroicons/react/16/solid";
+import useFetchUsers from "../../hooks/useFetchUsers";
+import { LocalApi } from "../../services/api";
 
 const SignUp = () => {
-  const { onSubmit } = useSignUp();
+  const { users } = useFetchUsers(LocalApi, "users");
+  const { onSubmit } = useSignUp(users);
   const methods = useForm({
     shouldUnregister: false,
     resolver: zodResolver(schemaUsers),

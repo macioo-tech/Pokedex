@@ -4,7 +4,7 @@ import { enqueueSnackbar } from "notistack";
 import { LocalApi } from "../services/api";
 import { useNavigate } from "react-router-dom";
 
-const useCreatePokemon = () => {
+const useCreatePokemon = (pokemons) => {
   const { isLoggedIn } = useContext(LoginContext);
   const navigate = useNavigate();
 
@@ -13,6 +13,12 @@ const useCreatePokemon = () => {
       navigate("/");
       return;
     }
+
+    if (pokemons.find((pokemon) => pokemon.name === data.name)) {
+      enqueueSnackbar(`Pokemon ${data.name} exists. Try another name.`, { variant: "error" });
+      return;
+    }
+
     event.preventDefault();
     try {
       await LocalApi.post(`/edits`, data, {

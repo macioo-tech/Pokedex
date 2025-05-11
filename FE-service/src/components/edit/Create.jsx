@@ -1,4 +1,7 @@
+import usePokemons from "../../hooks/usePokemons";
+import useFetchPokemons from "../../hooks/useFetchPokemons";
 import useCreatePokemon from "../../hooks/useCreatePokemon";
+import { PokeApi } from "../../services/api";
 import { useForm, FormProvider } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Input, Button, Box, Type } from "../index";
@@ -6,7 +9,9 @@ import { schemaPokemons } from "../../services/schemas";
 import { UserPlusIcon, AtSymbolIcon, LockClosedIcon } from "@heroicons/react/16/solid";
 
 const Create = () => {
-  const { onSubmit } = useCreatePokemon();
+  const { error, loading } = usePokemons(PokeApi, `pokemon?limit=${150}&offset=${0}`);
+  const { pokemons } = useFetchPokemons("all");
+  const { onSubmit } = useCreatePokemon(pokemons);
   const methods = useForm({
     shouldUnregister: false,
     resolver: zodResolver(schemaPokemons),
@@ -17,6 +22,8 @@ const Create = () => {
       experience: "",
     },
   });
+
+  console.log(pokemons);
 
   const { handleSubmit } = methods;
 
