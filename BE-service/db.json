@@ -66,11 +66,20 @@
       "id": 5
     },
     {
-      "name": "mynewpokemon",
-      "weight": 3,
-      "height": 10,
-      "experience": 293,
-      "id": 6
+      "name": "mynextone",
+      "weight": 666,
+      "height": 666,
+      "experience": 666,
+      "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/188.png",
+      "id": 7
+    },
+    {
+      "name": "juatFIS",
+      "weight": 7776,
+      "height": 998,
+      "experience": 772,
+      "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/161.png",
+      "id": 8
     }
   ]
 }

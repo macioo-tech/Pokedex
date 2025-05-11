@@ -28,4 +28,5 @@ export const schemaPokemons = z.object({
   weight: z.coerce.number().gt(0, { message: "Weight must be number > 0" }),
   height: z.coerce.number().gt(0, { message: "Height must be number > 0" }),
   experience: z.coerce.number().gt(0, { message: "Experience must be number > 0" }),
+  img: z.string().url({ message: "URL format incorrect" }),
 });
