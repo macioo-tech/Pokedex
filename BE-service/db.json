@@ -64,7 +64,13 @@
       "lost": 0,
       "experience": 293,
       "id": 5
+    },
+    {
+      "name": "mynewpokemon",
+      "weight": 3,
+      "height": 10,
+      "experience": 293,
+      "id": 6
     }
-  ],
-  "pokemons": []
+  ]
 }

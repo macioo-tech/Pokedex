@@ -15,7 +15,7 @@ const useCreatePokemon = () => {
     }
     event.preventDefault();
     try {
-      await LocalApi.post(`/pokemons`, data, {
+      await LocalApi.post(`/edits`, data, {
         headers: {
           "Content-Type": "application/json",
         },

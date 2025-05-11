@@ -76,5 +76,7 @@ export const updateList = (remoteData, localData) => {
     }
     return remoteItem;
   });
-  return [...updatedList];
+
+  const newLocalData = localData.filter((localItem) => !remoteData.some((remoteItem) => remoteItem.name === localItem.name));
+  return [...updatedList, ...newLocalData];
 };
