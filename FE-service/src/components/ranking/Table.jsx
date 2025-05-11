@@ -1,7 +1,7 @@
 import useFetchPokemons from "../../hooks/useFetchPokemons";
 import { useContext, useRef, useState } from "react";
 import { PokemonContext } from "../../context/PokemonContext";
-import { Box, Card, Pagination, EmptyContent, Loading } from "../index";
+import { Box, EmptyContent, Loading } from "../index";
 import { ChevronUpDownIcon } from "@heroicons/react/16/solid";
 import Table from "../shared/Table/Table";
 import TableHead from "../shared/Table/TableHead";
@@ -9,7 +9,7 @@ import TableCell from "../shared/Table/TableCell";
 
 export const ContentRanking = () => {
   const { queryPokeList } = useContext(PokemonContext);
-  const { pokemons, loading, error, currentPage, setCurrentPage } = useFetchPokemons("all");
+  const { pokemons, loading, error } = useFetchPokemons("all");
   const [sort, setSort] = useState("");
   const sortedPokemons = useRef([]);
 
@@ -58,6 +58,50 @@ export const ContentRanking = () => {
         sortedPokemons.current = [...pokemons].sort((a, b) => b.lost - a.lost);
       }
     }
+    if (type === "weight") {
+      if (sort === "ascWeight") {
+        setSort("descWeight");
+        sortedPokemons.current = [...pokemons].sort((a, b) => a.weight - b.weight);
+      } else {
+        setSort("ascWeight");
+        sortedPokemons.current = [...pokemons].sort((a, b) => b.weight - a.weight);
+      }
+    }
+    if (type === "height") {
+      if (sort === "ascHeight") {
+        setSort("descHeight");
+        sortedPokemons.current = [...pokemons].sort((a, b) => a.height - b.height);
+      } else {
+        setSort("ascHeight");
+        sortedPokemons.current = [...pokemons].sort((a, b) => b.height - a.height);
+      }
+    }
+    if (type === "ability") {
+      if (sort === "ascAbility") {
+        setSort("descAbility");
+        sortedPokemons.current = [...pokemons].sort((a, b) => {
+          if (a.ability > b.ability) return -1;
+          if (a.ability < b.ability) return 1;
+          return 0;
+        });
+      } else {
+        setSort("ascAbility");
+        sortedPokemons.current = [...pokemons].sort((a, b) => {
+          if (a.ability < b.ability) return -1;
+          if (a.ability > b.ability) return 1;
+          return 0;
+        });
+      }
+    }
+    if (type === "id") {
+      if (sort === "ascId") {
+        setSort("descId");
+        sortedPokemons.current = [...pokemons].sort((a, b) => a.id - b.id);
+      } else {
+        setSort("ascId");
+        sortedPokemons.current = [...pokemons].sort((a, b) => b.id - a.id);
+      }
+    }
   };
 
   console.log("sort", sort);
@@ -80,6 +124,7 @@ export const ContentRanking = () => {
     <>
       <Table>
         <TableHead>
+          <TableCell onClick={() => handleSort("id")}>Id</TableCell>
           <TableCell onClick={() => handleSort("name")}>Name</TableCell>
           <TableCell onClick={() => handleSort("experience")}>Experience</TableCell>
           <TableCell onClick={() => handleSort("weight")}>Weight</TableCell>
@@ -91,7 +136,6 @@ export const ContentRanking = () => {
 
         <TableRow pokemons={sortedPokemons.current.length ? sortedPokemons.current : pokemons} />
       </Table>
-      <Pagination totalPages={Math.ceil(queryPokeList.length / 15)} currentPage={currentPage} setCurrentPage={setCurrentPage} />
     </>
   );
 };
@@ -118,6 +162,9 @@ export const TableRow = ({ pokemons }) => {
     <tbody>
       {pokemons.map((item) => (
         <tr key={item.name}>
+          <td className="p-4 border-b border-blue-gray-50">
+            <p className="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">{item.id}</p>
+          </td>
           <td className="p-4 border-b border-blue-gray-50">
             <div className="flex items-center gap-3">
               <img src={item.img} alt={item.name} className="relative inline-block h-9 w-9 !rounded-full object-cover object-center" />

@@ -9,7 +9,7 @@ body {
   font-family: "Space Grotesk", sans-serif;
   background-color: white;
   color: black;
-  display: flex;
+  display: block;
   justify-content: center;
 }
 
